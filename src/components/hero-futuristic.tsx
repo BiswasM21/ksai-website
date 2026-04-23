@@ -9,7 +9,7 @@ const SPLINE_SCENE_URL = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.spli
 const HEAD_OBJECT_NAME = "Head"; // name of the head object in the Spline scene
 
 export const HeroFuturistic = () => {
-  const titleWords = "Data-Sovereign".split(" ");
+  const titleWords = "Building Data Sovereign AI Solutions for the Global South".split(" ");
 
   const appRef = useRef<Application | null>(null);
   const headRef = useRef<{ rotation: { x: number; y: number; z: number } } | null>(null);
@@ -99,14 +99,14 @@ export const HeroFuturistic = () => {
       {/* Text layer — pointer-events-none except CTA */}
       <div className="absolute inset-0 z-40 flex flex-col items-center justify-center px-6">
         {/* Title */}
-        <div className="text-3xl md:text-5xl xl:text-7xl 2xl:text-8xl font-black uppercase tracking-tight">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-6">
+        <div className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-black uppercase tracking-tight">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             {titleWords.map((word, index) => (
               <div
                 key={`l1-${index}`}
-                className={index < visibleWords ? "fade-in" : ""}
+                className={`${index < visibleWords ? "fade-in" : ""} gradient-text`}
                 style={{
-                  animationDelay: `${index * 0.13 + (delays[index] || 0)}s`,
+                  animationDelay: `${index * 0.08 + (delays[index] || 0)}s`,
                   opacity: index < visibleWords ? undefined : 0,
                 }}
               >
