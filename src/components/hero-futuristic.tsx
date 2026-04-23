@@ -109,8 +109,8 @@ export const HeroFuturistic = () => {
       {/* Text layer — pointer-events-none except CTA */}
       <div className="absolute inset-0 z-40 flex flex-col items-center justify-end px-6 pb-32">
         {/* Title line 1 */}
-        <div className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-black uppercase tracking-tight text-center">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+        <div className="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl uppercase tracking-wide text-center">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-5">
             {titleWords.map((word, index) => (
               <div
                 key={`l1-${index}`}
@@ -127,8 +127,8 @@ export const HeroFuturistic = () => {
         </div>
 
         {/* Title line 2 */}
-        <div className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-black uppercase tracking-tight mt-2 text-center">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+        <div className="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl uppercase tracking-wide mt-3 md:mt-4 text-center">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-5">
             {titleLine2.map((word, index) => (
               <div
                 key={`l2-${index}`}

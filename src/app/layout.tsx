@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Bebas_Neue } from "next/font/google";
 import { cookies } from "next/headers";
 import "./globals.css";
 import Nav from "@/components/Nav";
@@ -15,6 +15,13 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas",
+  subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
@@ -86,7 +93,7 @@ export default async function RootLayout({
   const initialTheme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : "dark";
 
   return (
-    <html lang="en" data-theme={initialTheme} className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" data-theme={initialTheme} className={`${inter.variable} ${jetbrainsMono.variable} ${bebasNeue.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <script

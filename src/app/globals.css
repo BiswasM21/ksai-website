@@ -161,11 +161,21 @@ html {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: shimmer 4s ease-in-out infinite;
+  font-family: var(--font-bebas);
+  letter-spacing: 0.05em;
 }
 
 @keyframes shimmer {
   0% { background-position: -100% 0; }
   100% { background-position: 200% 0; }
+}
+
+/* ===== GRADIENT TEXT ===== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #a855f7 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ===== GLOW EFFECT ===== */
