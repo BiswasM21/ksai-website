@@ -1,58 +1,70 @@
 "use client";
 
-import { useFormStatus } from "react-dom";
-import { Send, Loader2, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
+import { Send, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button
-      type="submit"
-      size="lg"
-      disabled={pending}
-      className="w-full sm:w-auto font-semibold"
-    >
-      {pending ? (
-        <>
-          <Loader2 className="w-4 h-4 animate-spin" />
-          Sending...
-        </>
-      ) : (
-        <>
-          <Send className="w-4 h-4" />
-          Send Message
-        </>
-      )}
-    </Button>
-  );
-}
+const WHATSAPP_NUMBER = "919692000359";
 
-interface ContactFormProps {
-  success?: boolean;
-}
+export default function ContactForm() {
+  const [submitted, setSubmitted] = useState(false);
 
-export default function ContactForm({ success }: ContactFormProps) {
-  if (success) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const name = data.get("name") as string;
+    const company = data.get("company") as string;
+    const email = data.get("email") as string;
+    const budget = data.get("budget") as string;
+    const message = data.get("message") as string;
+
+    const budgetLabels: Record<string, string> = {
+      "under-5": "Under ₹5 Lakhs",
+      "5-15": "₹5–15 Lakhs",
+      "15-50": "₹15–50 Lakhs",
+      "50-plus": "₹50 Lakhs+",
+      "not-sure": "Not sure yet",
+    };
+
+    const text = [
+      `*New enquiry from KSAI website*`,
+      ``,
+      `*Name:* ${name}`,
+      `*Company:* ${company || "—"}`,
+      `*Email:* ${email}`,
+      `*Budget:* ${budget ? budgetLabels[budget] || budget : "—"}`,
+      ``,
+      `*Message:*`,
+      message,
+    ].join("\n");
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, "_blank");
+    setSubmitted(true);
+  };
+
+  if (submitted) {
     return (
       <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-8 text-center">
         <div className="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center mx-auto mb-4">
           <CheckCircle2 className="w-8 h-8 text-green-400" />
         </div>
         <h3 className="text-xl font-semibold text-[var(--color-text)] mb-2">
-          Message Received
+          Opening WhatsApp
         </h3>
         <p className="text-[var(--color-muted)]">
-          We&apos;ll get back to you within 24 hours. Keep an eye on your inbox.
+          Your message has been pre-filled. Send it from WhatsApp to connect with us directly.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div className="space-y-2">
           <label htmlFor="name" className="text-sm font-medium text-[var(--color-text)]">
@@ -125,7 +137,14 @@ export default function ContactForm({ success }: ContactFormProps) {
         />
       </div>
 
-      <SubmitButton />
-    </div>
+      <Button
+        type="submit"
+        size="lg"
+        className="w-full sm:w-auto font-semibold"
+      >
+        <Send className="w-4 h-4" />
+        Message on WhatsApp
+      </Button>
+    </form>
   );
 }
