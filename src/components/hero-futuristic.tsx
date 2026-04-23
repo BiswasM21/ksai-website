@@ -107,7 +107,7 @@ export const HeroFuturistic = () => {
       />
 
       {/* Text layer — pointer-events-none except CTA */}
-      <div className="absolute inset-0 z-40 flex flex-col items-center justify-end px-6 pb-48">
+      <div className="absolute inset-0 z-40 flex flex-col items-center justify-center px-6" style={{ paddingTop: "55vh" }}>
         {/* Title line 1 */}
         <div className="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl uppercase tracking-wide text-center">
           <div className="flex flex-wrap justify-center gap-3 md:gap-5">
