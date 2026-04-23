@@ -43,7 +43,7 @@ const footerLinks = [
 const socialLinks = [
   { href: "https://linkedin.com/company/kalinga-sovereign-ai", label: "LinkedIn", Icon: LinkedInIcon },
   { href: "https://x.com/Kalinga_Sov_Ai", label: "X", Icon: XIcon },
-  { href: "https://wa.me/9692000359", label: "WhatsApp", Icon: WhatsAppIcon },
+  { href: "https://wa.me/919692000359", label: "WhatsApp", Icon: WhatsAppIcon },
   { href: "https://www.instagram.com/kalingasovereignai/", label: "Instagram", Icon: InstagramIcon },
   { href: "mailto:Kalingasovereignai@gmail.com", label: "Email", Icon: MailIcon },
 ];
