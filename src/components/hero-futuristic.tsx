@@ -107,14 +107,14 @@ export const HeroFuturistic = () => {
       />
 
       {/* Text layer — pointer-events-none except CTA */}
-      <div className="absolute inset-0 z-40 flex flex-col items-center justify-center px-6">
+      <div className="absolute inset-0 z-40 flex flex-col items-center justify-end px-6 pb-32">
         {/* Title line 1 */}
-        <div className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-black uppercase tracking-tight">
+        <div className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-black uppercase tracking-tight text-center">
           <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             {titleWords.map((word, index) => (
               <div
                 key={`l1-${index}`}
-                className={`${index < visibleWords ? "fade-in" : ""} gradient-text`}
+                className={`${index < visibleWords ? "fade-in" : ""} shimmer-text`}
                 style={{
                   animationDelay: `${index * 0.08 + (delays[index] || 0)}s`,
                   opacity: index < visibleWords ? undefined : 0,
@@ -127,12 +127,12 @@ export const HeroFuturistic = () => {
         </div>
 
         {/* Title line 2 */}
-        <div className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-black uppercase tracking-tight mt-2">
+        <div className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-black uppercase tracking-tight mt-2 text-center">
           <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             {titleLine2.map((word, index) => (
               <div
                 key={`l2-${index}`}
-                className={`${index < visibleWords2 ? "fade-in" : ""} gradient-text`}
+                className={`${index < visibleWords2 ? "fade-in" : ""} shimmer-text`}
                 style={{
                   animationDelay: `${index * 0.08 + (delays2[index] || 0)}s`,
                   opacity: index < visibleWords2 ? undefined : 0,
@@ -146,7 +146,7 @@ export const HeroFuturistic = () => {
 
         {/* CTA Button */}
         <div
-          className="mt-10 z-50 pointer-events-auto"
+          className="mt-8 z-50 pointer-events-auto"
           style={{
             opacity: 0,
             animation: visibleWords2 >= titleLine2.length
