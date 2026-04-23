@@ -96,7 +96,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#0a0f1e] text-white antialiased">
+      <body className="min-h-screen flex flex-col text-white antialiased">
         <ThemeProvider>
           <Nav />
           <main className="flex-1">{children}</main>

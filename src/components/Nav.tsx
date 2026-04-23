@@ -32,20 +32,20 @@ export default function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0a0f1e]/95 backdrop-blur-md border-b border-[#1f2937] shadow-lg shadow-black/20"
+          ? "bg-[var(--color-bg)]/95 backdrop-blur-md border-b border-[var(--color-border)] shadow-lg shadow-black/20"
           : "bg-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-[#3b82f6] flex items-center justify-center font-black text-white text-sm">
+          <div className="w-8 h-8 rounded-lg bg-[var(--color-accent)] flex items-center justify-center font-black text-white text-sm">
             KS
           </div>
-          <span className="font-semibold text-white tracking-tight group-hover:text-[#3b82f6] transition-colors hidden sm:block">
+          <span className="font-semibold text-white tracking-tight group-hover:text-[var(--color-accent)] transition-colors hidden sm:block">
             Kalinga Sovereign AI
           </span>
-          <span className="font-semibold text-white tracking-tight group-hover:text-[#3b82f6] transition-colors sm:hidden">
+          <span className="font-semibold text-white tracking-tight group-hover:text-[var(--color-accent)] transition-colors sm:hidden">
             KSAI
           </span>
         </Link>
@@ -56,7 +56,7 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className="px-3 py-2 text-sm text-[#9ca3af] hover:text-white transition-colors rounded-md hover:bg-white/5"
+              className="px-3 py-2 text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors rounded-md hover:bg-white/5"
             >
               {link.label}
             </Link>
@@ -88,7 +88,7 @@ export default function Nav() {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="bg-[#111827] border-[#1f2937] w-72"
+            className="bg-[var(--color-surface)] border-[var(--color-border)] w-72"
           >
             <div className="flex flex-col gap-6 mt-8">
               {navLinks.map((link) => (
@@ -96,7 +96,7 @@ export default function Nav() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-lg text-white hover:text-[#3b82f6] transition-colors"
+                  className="text-lg text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
                 >
                   {link.label}
                 </Link>
