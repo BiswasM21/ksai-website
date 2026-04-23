@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -75,13 +76,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const storedTheme = cookieStore.get("ksai-theme")?.value;
+  const initialTheme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : "dark";
+
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" data-theme={initialTheme} className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <script
@@ -91,13 +96,15 @@ export default function RootLayout({
                 var stored = localStorage.getItem('ksai-theme');
                 var theme = (stored === 'light') ? 'light' : 'dark';
                 document.documentElement.setAttribute('data-theme', theme);
+                // Also sync to cookie so Next.js server can read it
+                document.cookie = 'ksai-theme=' + theme + ';path=/;max-age=31536000;SameSite=Lax';
               })();
             `,
           }}
         />
       </head>
       <body className="min-h-screen flex flex-col text-white antialiased">
-        <ThemeProvider>
+        <ThemeProvider initialTheme={initialTheme}>
           <Nav />
           <main className="flex-1">{children}</main>
           <Footer />

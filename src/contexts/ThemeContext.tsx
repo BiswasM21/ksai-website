@@ -26,17 +26,11 @@ export function useTheme() {
   return useContext(ThemeContext);
 }
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
+export function ThemeProvider({ children, initialTheme = "dark" }: { children: ReactNode; initialTheme?: Theme }) {
+  const [theme, setThemeState] = useState<Theme>(initialTheme);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("ksai-theme") as Theme | null;
-    if (stored === "light" || stored === "dark") {
-      setThemeState(stored);
-    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      setThemeState("light");
-    }
     setMounted(true);
   }, []);
 
@@ -44,6 +38,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     if (!mounted) return;
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("ksai-theme", theme);
+    // Also set cookie so Next.js server can read it on subsequent requests
+    document.cookie = `ksai-theme=${theme};path=/;max-age=31536000;SameSite=Lax`;
   }, [theme, mounted]);
 
   const toggleTheme = () => {
