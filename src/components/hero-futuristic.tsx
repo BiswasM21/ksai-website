@@ -146,7 +146,7 @@ export const HeroFuturistic = () => {
 
         {/* CTA Button */}
         <div
-          className="mt-8 z-50 pointer-events-auto"
+          className="mt-3 z-50 pointer-events-auto"
           style={{
             opacity: 0,
             animation: visibleWords2 >= titleLine2.length
