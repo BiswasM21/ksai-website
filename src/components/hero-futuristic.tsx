@@ -9,9 +9,7 @@ const SPLINE_SCENE_URL = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.spli
 const HEAD_OBJECT_NAME = "Head"; // name of the head object in the Spline scene
 
 export const HeroFuturistic = () => {
-  const titleWords = "Sovereign AI for the".split(" ");
-  const titleLine2 = "Global South".split(" ");
-  const subtitle = "We call.";
+  const titleWords = "Data-Sovereign".split(" ");
 
   const appRef = useRef<Application | null>(null);
   const headRef = useRef<{ rotation: { x: number; y: number; z: number } } | null>(null);
@@ -22,16 +20,8 @@ export const HeroFuturistic = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
-  const delays2 = useMemo(
-    () => titleLine2.map(() => Math.random() * 0.07),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
-  const subtitleDelay = useMemo(() => Math.random() * 0.1, []);
 
   const [visibleWords, setVisibleWords] = useState(0);
-  const [visibleWords2, setVisibleWords2] = useState(0);
-  const [subtitleVisible, setSubtitleVisible] = useState(false);
 
   // Handle Spline scene load — find the head object
   const handleLoad = useCallback((app: Application) => {
@@ -77,14 +67,8 @@ export const HeroFuturistic = () => {
     if (visibleWords < titleWords.length) {
       const timeout = setTimeout(() => setVisibleWords(visibleWords + 1), 600);
       return () => clearTimeout(timeout);
-    } else if (visibleWords2 < titleLine2.length) {
-      const timeout = setTimeout(() => setVisibleWords2(visibleWords2 + 1), 500);
-      return () => clearTimeout(timeout);
-    } else {
-      const timeout = setTimeout(() => setSubtitleVisible(true), 800);
-      return () => clearTimeout(timeout);
     }
-  }, [visibleWords, visibleWords2, titleWords.length, titleLine2.length]);
+  }, [visibleWords, titleWords.length]);
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-[var(--color-surface-2)]">
@@ -114,7 +98,7 @@ export const HeroFuturistic = () => {
 
       {/* Text layer — pointer-events-none except CTA */}
       <div className="absolute inset-0 z-40 flex flex-col items-center justify-center px-6">
-        {/* Title line 1 */}
+        {/* Title */}
         <div className="text-3xl md:text-5xl xl:text-7xl 2xl:text-8xl font-black uppercase tracking-tight">
           <div className="flex flex-wrap justify-center gap-2 md:gap-6">
             {titleWords.map((word, index) => (
@@ -132,43 +116,12 @@ export const HeroFuturistic = () => {
           </div>
         </div>
 
-        {/* Title line 2 */}
-        <div className="text-3xl md:text-5xl xl:text-7xl 2xl:text-8xl font-black uppercase tracking-tight mt-1 md:mt-2">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-6">
-            {titleLine2.map((word, index) => (
-              <div
-                key={`l2-${index}`}
-                className={`${index < visibleWords2 ? "fade-in" : ""} gradient-text`}
-                style={{
-                  animationDelay: `${(titleWords.length + index) * 0.13 + (delays2[index] || 0)}s`,
-                  opacity: index < visibleWords2 ? undefined : 0,
-                }}
-              >
-                {word}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Subtitle */}
-        <div className="text-sm md:text-xl xl:text-2xl 2xl:text-3xl mt-4 md:mt-6 font-semibold overflow-hidden">
-          <div
-            className={subtitleVisible ? "fade-in-subtitle" : ""}
-            style={{
-              animationDelay: `${(titleWords.length + titleLine2.length) * 0.13 + 0.2 + subtitleDelay}s`,
-              opacity: subtitleVisible ? undefined : 0,
-            }}
-          >
-            {subtitle}
-          </div>
-        </div>
-
         {/* CTA Button */}
         <div
-          className="absolute bottom-36 md:bottom-32 left-1/2 -translate-x-1/2 z-50 pointer-events-auto"
+          className="mt-10 z-50 pointer-events-auto"
           style={{
             opacity: 0,
-            animation: subtitleVisible
+            animation: visibleWords >= titleWords.length
               ? "fadeIn 0.6s ease-out 0.3s forwards"
               : "none",
           }}
@@ -184,10 +137,10 @@ export const HeroFuturistic = () => {
           </a>
         </div>
 
-        {/* Explore scroll button */}
+        {/* Explore scroll button — centered via flex parent */}
         <button
           className="explore-btn"
-          style={{ animationDelay: "2.5s" }}
+          style={{ animationDelay: "2s" }}
           onClick={() => {
             document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
           }}
