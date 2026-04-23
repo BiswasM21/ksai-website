@@ -61,7 +61,7 @@ export const HeroFuturistic = () => {
     const animate = () => {
       const head = headRef.current;
       if (head) {
-        const targetX = mouseRef.current.y * 0.4; // tilt up/down
+        const targetX = -mouseRef.current.y * 0.4; // tilt up/down
         const targetY = mouseRef.current.x * 0.6; // turn left/right
         head.rotation.x = lerp(head.rotation.x, targetX, 0.08);
         head.rotation.y = lerp(head.rotation.y, targetY, 0.08);
