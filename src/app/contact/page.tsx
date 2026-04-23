@@ -13,8 +13,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@kalinga-ai.com",
-    href: "mailto:hello@kalinga-ai.com",
+    value: "Kalingasovereignai@gmail.com",
+    href: "mailto:Kalingasovereignai@gmail.com",
   },
   {
     icon: MapPin,
