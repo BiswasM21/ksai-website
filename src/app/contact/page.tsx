@@ -6,7 +6,34 @@ import { Mail, MapPin, Clock } from "lucide-react";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Kalinga Sovereign AI. Start your AI project or request a free scoping call.",
+    "Get in touch with Kalinga Sovereign AI. Start your AI project or request a free scoping call. We build custom AI agents and AI solutions for SMEs and enterprises.",
+  keywords: [
+    "contact AI company",
+    "custom AI agents enquiry",
+    "AI solutions quote",
+    "AI development consultation",
+    "AI automation contact",
+    "Kalinga Sovereign AI contact",
+  ],
+  alternates: {
+    canonical: "https://kalinga-ai.com/contact",
+  },
+  openGraph: {
+    title: "Contact Kalinga Sovereign AI — Start Your AI Project",
+    description:
+      "Ready to build custom AI agents or automate your workflows? Get in touch for a free 30-minute scoping call.",
+    url: "https://kalinga-ai.com/contact",
+    siteName: "Kalinga Sovereign AI",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Kalinga Sovereign AI" }],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Kalinga Sovereign AI",
+    description: "Start your custom AI agent project today.",
+    images: ["/og-image.png"],
+  },
 };
 
 const contactInfo = [

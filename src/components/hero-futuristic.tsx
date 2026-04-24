@@ -107,6 +107,12 @@ export const HeroFuturistic = () => {
       />
 
       {/* Text layer — pointer-events-none except CTA */}
+      {/* Screen-reader H1 with target keywords — visually hidden, drives SEO */}
+      <h1 className="sr-only">
+        Custom AI Agents and AI Solutions — Kalinga Sovereign AI builds AI agents,
+        workflow automation, and intelligent applications for SMEs, enterprises,
+        and institutions across India and the Global South
+      </h1>
       <div className="absolute inset-0 z-40 flex flex-col items-center justify-center px-6" style={{ paddingTop: "55vh" }}>
         {/* Title line 1 */}
         <div className="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl uppercase tracking-wide text-center">

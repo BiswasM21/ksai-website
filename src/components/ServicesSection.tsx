@@ -15,15 +15,15 @@ const services = [
     icon: Brain,
     title: "AI Integration",
     description:
-      "Embed intelligence into your existing systems. We connect LLMs, vision models, and custom AI to your workflows, CRMs, ERPs, and data pipelines.",
+      "Embed intelligence into your existing systems. We connect LLMs, vision models, and custom AI agents to your workflows, CRMs, ERPs, and data pipelines.",
     badge: "LLM · Vision · NLP",
   },
   {
     icon: Zap,
-    title: "Workflow Automation",
+    title: "AI Agents & Automation",
     description:
-      "Eliminate repetitive tasks with intelligent automation. From document processing to customer onboarding, we build bots that run 24/7 without human intervention.",
-    badge: "RPA · Agents · APIs",
+      "Build custom AI agents that run 24/7 — eliminating repetitive tasks, automating document processing, customer onboarding, and backend operations without human intervention.",
+    badge: "AI Agents · RPA · APIs",
   },
   {
     icon: Layers,
@@ -36,7 +36,7 @@ const services = [
     icon: Compass,
     title: "AI Consulting",
     description:
-      "Not sure where to start? We assess your business, map AI opportunities, and deliver a clear roadmap — no hype, just practical steps with ROI.",
+      "Not sure where to start? We assess your business, map AI agent opportunities, and deliver a clear roadmap — no hype, just practical steps with ROI.",
     badge: "Strategy · Audit · Roadmap",
   },
 ];

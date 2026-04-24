@@ -14,6 +14,34 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Kalinga Sovereign AI builds custom AI solutions for SMEs, enterprises, and institutions. Learn about our mission, approach, and technology.",
+  keywords: [
+    "AI solutions company",
+    "AI development India",
+    "custom AI agents",
+    "AI agent development",
+    "Kalinga Sovereign AI about",
+    "AI consulting",
+    "Global South AI",
+  ],
+  alternates: {
+    canonical: "https://kalinga-ai.com/about",
+  },
+  openGraph: {
+    title: "About Kalinga Sovereign AI — Custom AI Solutions for the Global South",
+    description:
+      "We build custom AI agents, workflow automation, and intelligent applications for SMEs, enterprises, and institutions across India and the Global South.",
+    url: "https://kalinga-ai.com/about",
+    siteName: "Kalinga Sovereign AI",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Kalinga Sovereign AI" }],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Kalinga Sovereign AI",
+    description: "Custom AI agents and AI solutions for the Global South.",
+    images: ["/og-image.png"],
+  },
 };
 
 const values = [
