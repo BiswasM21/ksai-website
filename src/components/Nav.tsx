@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -39,9 +40,13 @@ export default function Nav() {
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-[var(--color-accent)] flex items-center justify-center font-black text-white text-sm">
-            KS
-          </div>
+          <Image
+            src="/images/kalinga-logo.png"
+            alt="Kalinga Sovereign AI"
+            width={32}
+            height={32}
+            className="w-8 h-8 object-contain"
+          />
           <span className="font-semibold text-white tracking-tight group-hover:text-[var(--color-accent)] transition-colors hidden sm:block">
             Kalinga Sovereign AI
           </span>

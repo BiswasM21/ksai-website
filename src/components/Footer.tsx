@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 // Inline SVG icons — no external icon library dependency for social logos
 const LinkedInIcon = () => (
@@ -58,9 +59,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-[var(--color-accent)] flex items-center justify-center font-black text-[var(--color-text)] text-sm">
-                KS
-              </div>
+              <Image
+                src="/images/kalinga-logo.png"
+                alt="Kalinga Sovereign AI"
+                width={32}
+                height={32}
+                className="w-8 h-8 object-contain"
+              />
               <span className="font-semibold text-[var(--color-text)] tracking-tight">
                 Kalinga Sovereign AI
               </span>
