@@ -1,0 +1,87 @@
+# Kalinga Sovereign AI — Site Manifest for LLMs and AI Agents
+
+## Overview
+
+Kalinga Sovereign AI Pvt. Ltd. builds custom AI agents, workflow automation, and intelligent applications for SMEs, enterprises, and institutions across India and the Global South.
+
+- Website: https://kalinga-ai.com
+- Email: Kalingasovereignai@gmail.com
+- Location: Bhubaneswar, Odisha, India
+- LinkedIn: https://linkedin.com/company/kalinga-sovereign-ai
+- X (Twitter): https://x.com/Kalinga_Sov_Ai
+- Instagram: https://www.instagram.com/kalingasovereignai/
+
+## Primary Services
+
+### 1. AI Integration
+Embed intelligence into existing systems. Connect LLMs, vision models, and custom AI agents to workflows, CRMs, ERPs, and data pipelines.
+Tags: LLM, Vision, NLP
+
+### 2. AI Agents & Automation
+Build custom AI agents that run 24/7. Eliminate repetitive tasks, automate document processing, customer onboarding, and backend operations without human intervention.
+Tags: AI Agents, RPA, APIs
+
+### 3. Custom App Development
+Build full-stack applications with AI at their core — web apps, dashboards, mobile backends, and APIs designed for performance at scale.
+Tags: Next.js, Python, FastAPI
+
+### 4. AI Consulting
+Assess your business, map AI agent opportunities, and deliver a clear roadmap — practical steps with ROI.
+Tags: Strategy, Audit, Roadmap
+
+## Case Studies
+
+### Healthcare — Patient Query AI Assistant
+A 50-bed hospital reduced call volume by 72% using a RAG-based WhatsApp assistant trained on hospital SOPs.
+Stack: RAG, WhatsApp API, FastAPI, PostgreSQL
+Outcome: 72% call reduction, 4.6/5 patient satisfaction
+
+### Manufacturing — Inventory Forecasting Engine
+A mid-size manufacturer cut excess raw material inventory by 22% with ML-based demand prediction.
+Stack: Python, XGBoost, Airflow, Tableau
+Outcome: 22% inventory reduction, 3x faster planning cycles
+
+### E-commerce — AI-Powered Product Categorization
+Automated product tagging reduced listing time from 2 days to 15 minutes per product at 94% accuracy.
+Stack: PyTorch, CLIP, Next.js, Shopify API
+
+## Product
+
+### Seva Sahayak
+Autonomous healthcare robot — an AI-powered robot for hospital environments. Deployed in ICU and general ward settings for patient monitoring, pill delivery, and nurse assistance.
+Features: 24/7 autonomous operation, multi-language support, real-time patient data display, fall detection, nurse call integration, vitals monitoring, medicine delivery.
+
+## Technology Stack
+
+Next.js, React, Python, FastAPI, PyTorch, Transformers, PostgreSQL, Pinecone, AWS, GCP, On-prem, LangChain, LlamaIndex, React Three Fiber, Airflow, Modal
+
+## Values
+
+1. Sovereign by Design — AI that runs on your infrastructure, your data, your terms. No vendor lock-in.
+2. Built for the Global South — Language support, affordability, and local integration first.
+3. Ship to Production — Every engagement ends with working software running in your environment.
+4. Client Partnership — We transfer knowledge, document everything, and set your team up to own it.
+
+## Contact
+
+- Website: https://kalinga-ai.com/contact
+- Email: Kalingasovereignai@gmail.com
+- WhatsApp: +91 96920 00359
+- Availability: Currently accepting 2–3 new projects
+- Offer: Free 30-minute scoping call
+
+## Page Structure
+
+- / — Homepage
+- /about — Mission, approach, values, technology stack
+- /contact — Contact form, email, WhatsApp, location
+- /privacy — Privacy Policy
+- /terms — Terms of Service
+
+## Target Keywords
+
+custom AI agents, AI agent development, AI solutions, AI automation, AI integration, workflow automation, custom AI development, AI consulting, AI development company, AI bot development, India AI, Global South AI
+
+## Last Updated
+
+2026-04-24
