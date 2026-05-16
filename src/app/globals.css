@@ -44,6 +44,58 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== REDUCED MOTION - Mobile Performance ===== */
+@media (prefers-reduced-motion: reduce), (max-width: 768px) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .shimmer-text {
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+    animation: none;
+  }
+
+  .fade-in,
+  .fade-in-subtitle,
+  .explore-btn {
+    animation: none;
+    opacity: 1;
+  }
+
+  .explore-arrow {
+    animation: none;
+  }
+
+  .animate-spotlight {
+    animation: none;
+  }
+}
+
+/* ===== MOBILE-SPECIFIC OPTIMIZATIONS ===== */
+@media (max-width: 768px) {
+  /* Force GPU acceleration off on mobile */
+  .shimmer-text {
+    -webkit-text-fill-color: #ffffff;
+    text-shadow: none;
+  }
+
+  /* Disable blur effects on mobile */
+  .backdrop-blur-md {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 /* Custom scrollbar */

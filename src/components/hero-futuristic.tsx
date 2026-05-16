@@ -8,6 +8,15 @@ import { Spotlight } from "@/components/ui/spotlight";
 const SPLINE_SCENE_URL = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
 const HEAD_OBJECT_NAME = "Head";
 
+// Detect mobile/low-power devices
+const isMobile = () => {
+  if (typeof window === "undefined") return false;
+  return (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+    window.innerWidth < 768
+  );
+};
+
 export const HeroFuturistic = () => {
   const titleWords = "AI Solutions Built for the Rest".split(" ");
   const titleLine2 = "by the Best".split(" ");
@@ -16,21 +25,39 @@ export const HeroFuturistic = () => {
   const headRef = useRef<{ rotation: { x: number; y: number; z: number } } | null>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const rafRef = useRef<number | null>(null);
-  const isVisibleRef = useRef(true);
 
-  const delays = useMemo(
-    () => titleWords.map(() => Math.random() * 0.07),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
-  const delays2 = useMemo(
-    () => titleLine2.map(() => Math.random() * 0.07),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
-
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
   const [visibleWords, setVisibleWords] = useState(0);
   const [visibleWords2, setVisibleWords2] = useState(0);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  // Detect mobile and reduced motion preference
+  useEffect(() => {
+    setIsMobileDevice(isMobile());
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
+
+  // Initialize animations based on device
+  useEffect(() => {
+    // Skip animations on mobile or if user prefers reduced motion
+    if (isMobileDevice || prefersReducedMotion) {
+      setVisibleWords(titleWords.length);
+      setVisibleWords2(titleLine2.length);
+      return;
+    }
+    // Desktop: show words one by one
+    if (visibleWords < titleWords.length) {
+      const timeout = setTimeout(() => setVisibleWords(visibleWords + 1), 400);
+      return () => clearTimeout(timeout);
+    } else if (visibleWords2 < titleLine2.length) {
+      const timeout = setTimeout(() => setVisibleWords2(visibleWords2 + 1), 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [visibleWords, visibleWords2, titleWords.length, titleLine2.length, isMobileDevice, prefersReducedMotion]);
 
   const handleLoad = useCallback((app: Application) => {
     appRef.current = app;
@@ -40,16 +67,24 @@ export const HeroFuturistic = () => {
     }
   }, []);
 
+  // Mouse tracking - only on desktop
   useEffect(() => {
+    if (isMobileDevice) return;
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
       mouseRef.current.y = -((e.clientY / window.innerHeight) * 2 - 1);
     };
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [isMobileDevice]);
 
+  // Head animation loop - STOPPED on mobile
   useEffect(() => {
+    // Don't run animation loop on mobile
+    if (isMobileDevice || prefersReducedMotion) {
+      return;
+    }
+
     let lastTime = 0;
     const targetFPS = 30;
     const interval = 1000 / targetFPS;
@@ -73,17 +108,20 @@ export const HeroFuturistic = () => {
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [isMobileDevice, prefersReducedMotion]);
 
-  useEffect(() => {
-    if (visibleWords < titleWords.length) {
-      const timeout = setTimeout(() => setVisibleWords(visibleWords + 1), 400);
-      return () => clearTimeout(timeout);
-    } else if (visibleWords2 < titleLine2.length) {
-      const timeout = setTimeout(() => setVisibleWords2(visibleWords2 + 1), 300);
-      return () => clearTimeout(timeout);
-    }
-  }, [visibleWords, visibleWords2, titleWords.length, titleLine2.length]);
+  const delays = useMemo(
+    () => titleWords.map(() => Math.random() * 0.07),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+  const delays2 = useMemo(
+    () => titleLine2.map(() => Math.random() * 0.07),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
+  const shouldAnimate = !isMobileDevice && !prefersReducedMotion;
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-[var(--color-surface-2)]">
@@ -111,25 +149,33 @@ export const HeroFuturistic = () => {
         fill="white"
       />
 
-      {/* Text layer — pointer-events-none except CTA */}
-      {/* Screen-reader H1 with target keywords — visually hidden, drives SEO */}
+      {/* Screen-reader H1 with target keywords */}
       <h1 className="sr-only">
         Custom AI Agents and AI Solutions — Kalinga Sovereign AI builds AI agents,
         workflow automation, and intelligent applications for SMEs, enterprises,
         and institutions across India and the Global South
       </h1>
-      <div className="absolute inset-0 z-40 flex flex-col items-center justify-center px-6" style={{ paddingTop: "55vh" }}>
-        {/* Title line 1 */}
-        <div className="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl uppercase tracking-wide text-center">
-          <div className="flex flex-wrap justify-center gap-3 md:gap-5">
+
+      {/* Text layer */}
+      <div
+        className="absolute inset-0 z-40 flex flex-col items-center justify-center px-4 md:px-6"
+        style={{ paddingTop: isMobileDevice ? "45vh" : "55vh" }}
+      >
+        {/* Title line 1 - Smaller on mobile */}
+        <div className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl uppercase tracking-wide text-center leading-tight md:leading-normal">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-5">
             {titleWords.map((word, index) => (
               <div
                 key={`l1-${index}`}
-                className={`${index < visibleWords ? "fade-in" : ""} shimmer-text`}
-                style={{
-                  animationDelay: `${index * 0.08 + (delays[index] || 0)}s`,
-                  opacity: index < visibleWords ? undefined : 0,
-                }}
+                className={`${index < visibleWords ? (shouldAnimate ? "fade-in" : "opacity-100") : "opacity-0"} ${shouldAnimate ? "shimmer-text" : "text-white"}`}
+                style={
+                  shouldAnimate
+                    ? {
+                        animationDelay: `${index * 0.08 + (delays[index] || 0)}s`,
+                        opacity: index < visibleWords ? undefined : 0,
+                      }
+                    : { opacity: index < visibleWords ? 1 : 0 }
+                }
               >
                 {word}
               </div>
@@ -137,17 +183,21 @@ export const HeroFuturistic = () => {
           </div>
         </div>
 
-        {/* Title line 2 */}
-        <div className="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl uppercase tracking-wide mt-3 md:mt-4 text-center">
-          <div className="flex flex-wrap justify-center gap-3 md:gap-5">
+        {/* Title line 2 - Smaller on mobile */}
+        <div className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl uppercase tracking-wide mt-2 md:mt-4 text-center leading-tight md:leading-normal">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-5">
             {titleLine2.map((word, index) => (
               <div
                 key={`l2-${index}`}
-                className={`${index < visibleWords2 ? "fade-in" : ""} shimmer-text`}
-                style={{
-                  animationDelay: `${index * 0.08 + (delays2[index] || 0)}s`,
-                  opacity: index < visibleWords2 ? undefined : 0,
-                }}
+                className={`${index < visibleWords2 ? (shouldAnimate ? "fade-in" : "opacity-100") : "opacity-0"} ${shouldAnimate ? "shimmer-text" : "text-white"}`}
+                style={
+                  shouldAnimate
+                    ? {
+                        animationDelay: `${index * 0.08 + (delays2[index] || 0)}s`,
+                        opacity: index < visibleWords2 ? undefined : 0,
+                      }
+                    : { opacity: index < visibleWords2 ? 1 : 0 }
+                }
               >
                 {word}
               </div>
@@ -156,18 +206,10 @@ export const HeroFuturistic = () => {
         </div>
 
         {/* CTA Button */}
-        <div
-          className="mt-3 z-50 pointer-events-auto"
-          style={{
-            opacity: 0,
-            animation: visibleWords2 >= titleLine2.length
-              ? "fadeIn 0.6s ease-out 0.3s forwards"
-              : "none",
-          }}
-        >
+        <div className="mt-6 md:mt-4 z-50 pointer-events-auto">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-semibold px-8 py-3 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 active:scale-95"
+            className="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-semibold px-6 py-2.5 md:px-8 md:py-3 rounded-full transition-all duration-200 active:scale-95 text-sm md:text-base"
           >
             Talk to Us
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -176,10 +218,9 @@ export const HeroFuturistic = () => {
           </a>
         </div>
 
-        {/* Explore scroll button — centered via flex parent */}
+        {/* Explore scroll button - hidden on mobile for performance */}
         <button
-          className="explore-btn"
-          style={{ animationDelay: "2s" }}
+          className={`${isMobileDevice ? "hidden" : "explore-btn"}`}
           onClick={() => {
             document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
           }}

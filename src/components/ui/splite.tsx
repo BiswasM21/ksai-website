@@ -21,11 +21,26 @@ function SplineLoader() {
   )
 }
 
+// Detect if we should use lower quality settings
+const isMobileDevice = () => {
+  if (typeof window === "undefined") return false;
+  return (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+    window.innerWidth < 768
+  );
+};
+
 export function SplineScene({ scene, className, onSplineLoad }: SplineSceneProps) {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    setIsMobile(isMobileDevice())
+  }, [])
 
   const handleLoad = (app: Application) => {
     setIsLoaded(true)
+    // Mobile optimization handled via CSS and animation loop reduction
     onSplineLoad?.(app)
   }
 

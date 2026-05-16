@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 
 const testimonials = [
@@ -28,51 +28,53 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-surface-2)] border-y border-[var(--color-border)]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 md:py-24 lg:py-32 bg-[var(--color-surface-2)] border-y border-[var(--color-border)]">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: prefersReducedMotion ? 0.01 : 0.6 }}
+          className="text-center mb-10 md:mb-16"
         >
           <Badge variant="secondary" className="mb-4 text-xs font-mono">
             CLIENT VOICES
           </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold text-[var(--color-text)]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-text)]">
             What Our Clients <span className="gradient-text">Say</span>
           </h2>
         </motion.div>
 
         {/* Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "-30px" }}
               transition={{
-                duration: 0.6,
-                delay: i * 0.15,
+                duration: prefersReducedMotion ? 0.01 : 0.6,
+                delay: prefersReducedMotion ? 0 : i * 0.15,
               }}
-              className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-6 flex flex-col"
+              className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-4 md:p-6 flex flex-col"
             >
               {/* Quote mark */}
-              <div className="text-5xl text-[var(--color-accent)]/30 font-serif leading-none mb-4">
+              <div className="text-4xl md:text-5xl text-[var(--color-accent)]/30 font-serif leading-none mb-3 md:mb-4">
                 &ldquo;
               </div>
 
               {/* Quote text */}
-              <p className="text-[var(--color-text)] text-sm leading-relaxed flex-1 mb-6">
+              <p className="text-[var(--color-text)] text-xs md:text-sm leading-relaxed flex-1 mb-4 md:mb-6">
                 {t.quote}
               </p>
 
               {/* Author */}
-              <div className="border-t border-[var(--color-border)] pt-4">
+              <div className="border-t border-[var(--color-border)] pt-3 md:pt-4">
                 <p className="text-[var(--color-text)] font-semibold text-sm">{t.name}</p>
                 <p className="text-[var(--color-muted)] text-xs mt-0.5">{t.title}</p>
                 <Badge variant="outline" className="mt-2 text-[10px] font-mono">
