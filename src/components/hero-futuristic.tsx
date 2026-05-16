@@ -6,7 +6,7 @@ import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
 
 const SPLINE_SCENE_URL = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
-const HEAD_OBJECT_NAME = "Head"; // name of the head object in the Spline scene
+const HEAD_OBJECT_NAME = "Head";
 
 export const HeroFuturistic = () => {
   const titleWords = "AI Solutions Built for the Rest".split(" ");
@@ -15,6 +15,8 @@ export const HeroFuturistic = () => {
   const appRef = useRef<Application | null>(null);
   const headRef = useRef<{ rotation: { x: number; y: number; z: number } } | null>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
+  const rafRef = useRef<number | null>(null);
+  const isVisibleRef = useRef(true);
 
   const delays = useMemo(
     () => titleWords.map(() => Math.random() * 0.07),
@@ -30,7 +32,6 @@ export const HeroFuturistic = () => {
   const [visibleWords, setVisibleWords] = useState(0);
   const [visibleWords2, setVisibleWords2] = useState(0);
 
-  // Handle Spline scene load — find the head object
   const handleLoad = useCallback((app: Application) => {
     appRef.current = app;
     const head = app.findObjectByName(HEAD_OBJECT_NAME);
@@ -39,10 +40,8 @@ export const HeroFuturistic = () => {
     }
   }, []);
 
-  // Track mouse position globally
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      // Normalize to [-1, 1]
       mouseRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
       mouseRef.current.y = -((e.clientY / window.innerHeight) * 2 - 1);
     };
@@ -50,26 +49,32 @@ export const HeroFuturistic = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Smoothly lerp head rotation toward cursor each animation frame
   useEffect(() => {
-    let rafId: number;
+    let lastTime = 0;
+    const targetFPS = 30;
+    const interval = 1000 / targetFPS;
+
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-    const animate = () => {
-      const head = headRef.current;
-      if (head) {
-        const targetX = -mouseRef.current.y * 0.4; // tilt up/down
-        const targetY = mouseRef.current.x * 0.6; // turn left/right
-        head.rotation.x = lerp(head.rotation.x, targetX, 0.08);
-        head.rotation.y = lerp(head.rotation.y, targetY, 0.08);
+    const animate = (time: number) => {
+      if (time - lastTime >= interval) {
+        lastTime = time;
+        const head = headRef.current;
+        if (head) {
+          const targetX = -mouseRef.current.y * 0.4;
+          const targetY = mouseRef.current.x * 0.6;
+          head.rotation.x = lerp(head.rotation.x, targetX, 0.08);
+          head.rotation.y = lerp(head.rotation.y, targetY, 0.08);
+        }
       }
-      rafId = requestAnimationFrame(animate);
+      rafRef.current = requestAnimationFrame(animate);
     };
-    rafId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafId);
+    rafRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
-  // Word-by-word reveal animation
   useEffect(() => {
     if (visibleWords < titleWords.length) {
       const timeout = setTimeout(() => setVisibleWords(visibleWords + 1), 400);

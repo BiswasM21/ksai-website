@@ -62,9 +62,9 @@ export const metadata: Metadata = {
       "Custom AI integrations built for scale, speed, and results. Serving SMEs and enterprises across India and the Global South.",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "/images/ksai-favicon.png",
+        width: 512,
+        height: 512,
         alt: "Kalinga Sovereign AI",
       },
     ],
@@ -74,7 +74,15 @@ export const metadata: Metadata = {
     title: "Kalinga Sovereign AI — Sovereign AI Solutions for the Global South",
     description:
       "Custom AI integrations built for scale, speed, and results.",
-    images: ["/og-image.png"],
+    images: ["/images/ksai-favicon.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/images/ksai-favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/ksai-favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/images/ksai-favicon.png", sizes: "any", type: "image/png" },
+    ],
+    apple: "/images/ksai-favicon.png",
   },
   robots: {
     index: true,
@@ -101,7 +109,8 @@ export default async function RootLayout({
   return (
     <html lang="en" data-theme={initialTheme} className={`${inter.variable} ${jetbrainsMono.variable} ${bebasNeue.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/images/ksai-favicon-32.png" sizes="32x32" type="image/png" />
+        <link rel="icon" href="/images/ksai-favicon.png" sizes="any" type="image/png" />
         <link rel="preconnect" href="https://prod.spline.design" />
         <link rel="dns-prefetch" href="https://prod.spline.design" />
         <script

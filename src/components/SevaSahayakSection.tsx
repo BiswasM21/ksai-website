@@ -57,11 +57,13 @@ export default function SevaSahayakSection() {
           >
             <div className="relative rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-2xl shadow-black/40">
               <Image
-                src="/images/seva-sahayak.png"
+                src="/images/seva-sahayak-compressed.jpg"
                 alt="Seva Sahayak — Autonomous Healthcare Robot"
                 width={640}
                 height={480}
                 className="w-full h-auto object-cover"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-surface-2)]/50 to-transparent" />
             </div>

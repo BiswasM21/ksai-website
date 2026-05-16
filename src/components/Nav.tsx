@@ -41,11 +41,12 @@ export default function Nav() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <Image
-            src="/images/kalinga-logo.png"
+            src="/images/kalinga-logo-optimized.png"
             alt="Kalinga Sovereign AI"
             width={32}
             height={32}
             className="w-8 h-8 object-contain"
+            loading="eager"
           />
           <span className="font-semibold text-white tracking-tight group-hover:text-[var(--color-accent)] transition-colors hidden sm:block">
             Kalinga Sovereign AI
