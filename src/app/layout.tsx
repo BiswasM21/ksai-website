@@ -104,10 +104,10 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies();
   const storedTheme = cookieStore.get("ksai-theme")?.value;
-  const initialTheme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : "light";
+  const initialTheme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : "dark";
 
   return (
-    <html lang="en" data-theme={initialTheme} className={`${inter.variable} ${jetbrainsMono.variable} ${bebasNeue.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} ${bebasNeue.variable}`}>
       <head>
         <link rel="icon" href="/images/ksai-favicon-32.png" sizes="32x32" type="image/png" />
         <link rel="icon" href="/images/ksai-favicon.png" sizes="any" type="image/png" />
@@ -183,19 +183,6 @@ export default async function RootLayout({
                 ],
               },
             }),
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var stored = localStorage.getItem('ksai-theme');
-                var theme = (stored === 'dark') ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', theme);
-                // Also sync to cookie so Next.js server can read it
-                document.cookie = 'ksai-theme=' + theme + ';path=/;max-age=31536000;SameSite=Lax';
-              })();
-            `,
           }}
         />
       </head>
