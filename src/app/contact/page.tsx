@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
 import ContactForm from "@/components/ContactForm";
-import { Mail, MapPin, Clock } from "lucide-react";
+import { Mail, MapPin, Phone, Linkedin, Twitter, Github } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact | Kalinga Sovereign AI",
   description:
     "Get in touch with Kalinga Sovereign AI. Start your AI project or request a free scoping call. We build custom AI agents and AI solutions for SMEs and enterprises.",
   keywords: [
@@ -14,6 +14,8 @@ export const metadata: Metadata = {
     "AI development consultation",
     "AI automation contact",
     "Kalinga Sovereign AI contact",
+    "AI company Bhubaneswar",
+    "AI solutions India",
   ],
   alternates: {
     canonical: "https://kalinga-ai.com/contact",
@@ -44,18 +46,95 @@ const contactInfo = [
     href: "mailto:Kalingasovereignai@gmail.com",
   },
   {
+    icon: Phone,
+    label: "Phone",
+    value: "+91 98765 43210",
+    href: "tel:+919876543210",
+  },
+  {
     icon: MapPin,
-    label: "Location",
+    label: "Address",
     value: "Bhubaneswar, Odisha, India",
     href: null,
   },
+];
+
+const socialLinks = [
   {
-    icon: Clock,
-    label: "Response Time",
-    value: "Within 24 hours",
-    href: null,
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://linkedin.com/company/kalinga-sovereign-ai",
+  },
+  {
+    icon: Twitter,
+    label: "Twitter",
+    href: "https://twitter.com/kalingaai",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    href: "https://github.com/kalinga-sovereign-ai",
   },
 ];
+
+function ContactInfoCard({
+  icon: Icon,
+  label,
+  value,
+  href,
+}: (typeof contactInfo)[number]) {
+  const content = (
+    <div className="flex items-start gap-4">
+      <div className="w-10 h-10 rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 flex items-center justify-center flex-shrink-0">
+        <Icon className="w-5 h-5 text-[var(--color-accent)]" />
+      </div>
+      <div>
+        <p className="text-[var(--color-text-muted)] text-xs uppercase tracking-wider mb-1">
+          {label}
+        </p>
+        <p className="text-[var(--color-text)] font-medium">{value}</p>
+      </div>
+    </div>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-5 hover:border-[var(--color-accent)]/40 transition-colors"
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-5">
+      {content}
+    </div>
+  );
+}
+
+function SocialLinkCard({
+  icon: Icon,
+  label,
+  href,
+}: (typeof socialLinks)[number]) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-3 p-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl hover:border-[var(--color-primary)]/40 transition-colors"
+      aria-label={`Visit our ${label} page`}
+    >
+      <Icon className="w-5 h-5 text-[var(--color-text-secondary)]" />
+      <span className="text-[var(--color-text)] font-medium">{label}</span>
+    </a>
+  );
+}
 
 export default function ContactPage() {
   return (
@@ -67,75 +146,53 @@ export default function ContactPage() {
             CONTACT
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold text-[var(--color-text)] mb-4">
-            Let&apos;s <span className="gradient-text">Talk</span>
+            Get in <span className="gradient-text">Touch</span>
           </h1>
-          <p className="text-[var(--color-muted)] text-lg max-w-xl leading-relaxed">
+          <p className="text-[var(--color-text-secondary)] text-lg max-w-xl leading-relaxed">
             Tell us about your project. We&apos;ll respond within 24 hours with
             honest, practical feedback — no sales pitch.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-          {/* Contact info sidebar */}
-          <div className="lg:col-span-2 space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Form */}
+          <div className="order-2 lg:order-1">
+            <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 md:p-8">
+              <h2 className="text-xl font-semibold text-[var(--color-text)] mb-6">
+                Send us a message
+              </h2>
+              <ContactForm />
+            </div>
+          </div>
+
+          {/* Contact Info */}
+          <div className="order-1 lg:order-2 space-y-6">
             {/* Info cards */}
-            {contactInfo.map((item) => {
-              const Icon = item.icon;
-              const content = (
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-5 h-5 text-[var(--color-accent)]" />
-                  </div>
-                  <div>
-                    <p className="text-[var(--color-muted-dark)] text-xs uppercase tracking-wider mb-1">
-                      {item.label}
-                    </p>
-                    <p className="text-[var(--color-text)] font-medium">{item.value}</p>
-                  </div>
-                </div>
-              );
+            {contactInfo.map((item) => (
+              <ContactInfoCard key={item.label} {...item} />
+            ))}
 
-              if (item.href) {
-                return (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="block bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-5 hover:border-[var(--color-accent)]/40 transition-colors"
-                  >
-                    {content}
-                  </a>
-                );
-              }
-
-              return (
-                <div
-                  key={item.label}
-                  className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-5"
-                >
-                  {content}
-                </div>
-              );
-            })}
+            {/* Social links */}
+            <div className="pt-4">
+              <p className="text-[var(--color-text-muted)] text-sm uppercase tracking-wider mb-4">
+                Connect with us
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {socialLinks.map((item) => (
+                  <SocialLinkCard key={item.label} {...item} />
+                ))}
+              </div>
+            </div>
 
             {/* Availability note */}
-            <div className="bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-xl p-5">
-              <p className="text-[var(--color-muted)] text-sm leading-relaxed">
+            <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-5 mt-8">
+              <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
                 <span className="text-[var(--color-text)] font-medium">
                   Currently accepting new projects.
                 </span>{" "}
                 We typically take on 2–3 active engagements at a time to ensure
                 quality delivery.
               </p>
-            </div>
-          </div>
-
-          {/* Form */}
-          <div className="lg:col-span-3">
-            <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 md:p-8">
-              <h2 className="text-xl font-semibold text-[var(--color-text)] mb-6">
-                Send us a message
-              </h2>
-              <ContactForm />
             </div>
           </div>
         </div>

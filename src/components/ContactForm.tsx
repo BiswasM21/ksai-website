@@ -1,50 +1,56 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 const WHATSAPP_NUMBER = "919692000359";
 
+interface FormData {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+}
+
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    const name = data.get("name") as string;
-    const company = data.get("company") as string;
-    const email = data.get("email") as string;
-    const budget = data.get("budget") as string;
-    const message = data.get("message") as string;
-
-    const budgetLabels: Record<string, string> = {
-      "under-5": "Under ₹5 Lakhs",
-      "5-15": "₹5–15 Lakhs",
-      "15-50": "₹15–50 Lakhs",
-      "50-plus": "₹50 Lakhs+",
-      "not-sure": "Not sure yet",
+    const formData: FormData = {
+      name: data.get("name") as string,
+      company: data.get("company") as string || "",
+      email: data.get("email") as string,
+      message: data.get("message") as string,
     };
+
+    // Simulate a brief loading delay for UX
+    await new Promise((resolve) => setTimeout(resolve, 800));
 
     const text = [
       `*New enquiry from KSAI website*`,
       ``,
-      `*Name:* ${name}`,
-      `*Company:* ${company || "—"}`,
-      `*Email:* ${email}`,
-      `*Budget:* ${budget ? budgetLabels[budget] || budget : "—"}`,
+      `*Name:* ${formData.name}`,
+      `*Company:* ${formData.company || "—"}`,
+      `*Email:* ${formData.email}`,
       ``,
       `*Message:*`,
-      message,
+      formData.message,
     ].join("\n");
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, "_blank");
     setSubmitted(true);
+    setIsLoading(false);
   };
 
   if (submitted) {
@@ -56,7 +62,7 @@ export default function ContactForm() {
         <h3 className="text-xl font-semibold text-[var(--color-text)] mb-2">
           Opening WhatsApp
         </h3>
-        <p className="text-[var(--color-muted)]">
+        <p className="text-[var(--color-text-secondary)]">
           Your message has been pre-filled. Send it from WhatsApp to connect with us directly.
         </p>
       </div>
@@ -65,36 +71,24 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div className="space-y-2">
-          <label htmlFor="name" className="text-sm font-medium text-[var(--color-text)]">
-            Full Name
-          </label>
-          <Input
-            id="name"
-            name="name"
-            placeholder="Your full name"
-            required
-            autoComplete="name"
-          />
-        </div>
-        <div className="space-y-2">
-          <label htmlFor="company" className="text-sm font-medium text-[var(--color-text)]">
-            Company
-          </label>
-          <Input
-            id="company"
-            name="company"
-            placeholder="Company name"
-            autoComplete="organization"
-          />
-        </div>
+      <div className="space-y-2">
+        <label htmlFor="name" className="text-sm font-medium text-[var(--color-text)]">
+          Full Name <span className="text-red-400">*</span>
+        </label>
+        <Input
+          id="name"
+          name="name"
+          placeholder="Your full name"
+          required
+          autoComplete="name"
+          disabled={isLoading}
+        />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div className="space-y-2">
           <label htmlFor="email" className="text-sm font-medium text-[var(--color-text)]">
-            Email
+            Email <span className="text-red-400">*</span>
           </label>
           <Input
             id="email"
@@ -103,30 +97,26 @@ export default function ContactForm() {
             placeholder="you@company.com"
             required
             autoComplete="email"
+            disabled={isLoading}
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="budget" className="text-sm font-medium text-[var(--color-text)]">
-            Budget Range
+          <label htmlFor="company" className="text-sm font-medium text-[var(--color-text)]">
+            Company <span className="text-[var(--color-text-muted)]">(optional)</span>
           </label>
-          <select
-            id="budget"
-            name="budget"
-            className="flex h-11 w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-3)] px-4 py-2 text-sm text-[var(--color-muted)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:border-transparent cursor-pointer"
-          >
-            <option value="">Select range</option>
-            <option value="under-5">Under ₹5 Lakhs</option>
-            <option value="5-15">₹5–15 Lakhs</option>
-            <option value="15-50">₹15–50 Lakhs</option>
-            <option value="50-plus">₹50 Lakhs+</option>
-            <option value="not-sure">Not sure yet</option>
-          </select>
+          <Input
+            id="company"
+            name="company"
+            placeholder="Company name"
+            autoComplete="organization"
+            disabled={isLoading}
+          />
         </div>
       </div>
 
       <div className="space-y-2">
         <label htmlFor="message" className="text-sm font-medium text-[var(--color-text)]">
-          Project Brief
+          Message <span className="text-red-400">*</span>
         </label>
         <Textarea
           id="message"
@@ -134,6 +124,7 @@ export default function ContactForm() {
           placeholder="Describe what you're trying to build or solve. The more detail, the better the scoping."
           required
           rows={5}
+          disabled={isLoading}
         />
       </div>
 
@@ -141,9 +132,19 @@ export default function ContactForm() {
         type="submit"
         size="lg"
         className="w-full sm:w-auto font-semibold"
+        disabled={isLoading}
       >
-        <Send className="w-4 h-4" />
-        Message on WhatsApp
+        {isLoading ? (
+          <>
+            <Loader2 className="w-4 h-4 animate-spin" />
+            Opening WhatsApp...
+          </>
+        ) : (
+          <>
+            <Send className="w-4 h-4" />
+            Message on WhatsApp
+          </>
+        )}
       </Button>
     </form>
   );
