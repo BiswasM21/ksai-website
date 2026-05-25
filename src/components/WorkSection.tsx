@@ -68,7 +68,7 @@ export default function WorkSection() {
           transition={{ duration: prefersReducedMotion ? 0.01 : 0.6 }}
           className="text-center mb-10 md:mb-16"
         >
-          <Badge variant="secondary" className="mb-4 text-xs font-mono">
+          <Badge variant="secondary" className="mb-4 text-xs font-medium tracking-wider">
             CASE STUDIES
           </Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-text)] mb-4">
@@ -103,7 +103,7 @@ export default function WorkSection() {
                   <CardContent className="p-4 md:p-6 flex flex-col h-full">
                     {/* Header row */}
                     <div className="flex items-start justify-between gap-2 mb-3 md:mb-4">
-                      <Badge variant="outline" className="text-xs font-mono">
+                      <Badge variant="outline" className="text-xs font-medium">
                         {project.industry}
                       </Badge>
                       <div className={`flex-shrink-0 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}>
@@ -123,7 +123,7 @@ export default function WorkSection() {
 
                     {/* Outcome badge */}
                     <div className="rounded-lg bg-[var(--color-surface-2)] border border-[var(--color-border)] p-2.5 md:p-3 mt-4">
-                      <p className="text-[var(--color-accent)] text-xs font-semibold font-mono">
+                      <p className="text-[var(--color-accent)] text-xs font-semibold font-medium">
                         {project.outcome}
                       </p>
                     </div>
@@ -134,7 +134,7 @@ export default function WorkSection() {
                         <Badge
                           key={tag}
                           variant="secondary"
-                          className="text-[9px] md:text-[10px] font-mono"
+                          className="text-[9px] md:text-[10px] font-medium"
                         >
                           {tag}
                         </Badge>

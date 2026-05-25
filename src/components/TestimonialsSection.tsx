@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 const testimonials = [
   {
     quote:
-      "Kalinga built us an AI assistant that handles 60% of our inbound patient queries. The team understood our constraints — we needed something that worked, not something flashy. It shipped in 6 weeks.",
+      "Kalinga built us an AI assistant that handles 60% of our inbound patient queries. The team understood our constraints — we needed something that works, not something flashy. It shipped in 6 weeks.",
     name: "Dr. Priya Mehta",
     title: "Director, City Medicare Hospital",
     industry: "Healthcare",
@@ -31,26 +31,26 @@ export default function TestimonialsSection() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="py-16 md:py-24 lg:py-32 bg-[var(--color-surface-2)] border-y border-[var(--color-border)]">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <section className="py-20 md:py-32 bg-[var(--color-surface-2)]">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: prefersReducedMotion ? 0.01 : 0.6 }}
-          className="text-center mb-10 md:mb-16"
+          transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
+          className="text-center mb-16"
         >
-          <Badge variant="secondary" className="mb-4 text-xs font-mono">
+          <Badge variant="secondary" className="mb-4 text-xs font-medium tracking-wider">
             CLIENT VOICES
           </Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-text)]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[var(--color-text)] tracking-tight">
             What Our Clients <span className="gradient-text">Say</span>
           </h2>
         </motion.div>
 
         {/* Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
@@ -58,26 +58,26 @@ export default function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
               transition={{
-                duration: prefersReducedMotion ? 0.01 : 0.6,
-                delay: prefersReducedMotion ? 0 : i * 0.15,
+                duration: prefersReducedMotion ? 0 : 0.5,
+                delay: prefersReducedMotion ? 0 : i * 0.1,
               }}
-              className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-4 md:p-6 flex flex-col"
+              className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] card-hover"
             >
               {/* Quote mark */}
-              <div className="text-4xl md:text-5xl text-[var(--color-accent)]/30 font-serif leading-none mb-3 md:mb-4">
+              <div className="text-4xl text-[var(--color-accent)]/20 font-serif leading-none mb-4">
                 &ldquo;
               </div>
 
               {/* Quote text */}
-              <p className="text-[var(--color-text)] text-xs md:text-sm leading-relaxed flex-1 mb-4 md:mb-6">
+              <p className="text-[var(--color-text)] text-sm leading-relaxed mb-6">
                 {t.quote}
               </p>
 
               {/* Author */}
-              <div className="border-t border-[var(--color-border)] pt-3 md:pt-4">
-                <p className="text-[var(--color-text)] font-semibold text-sm">{t.name}</p>
-                <p className="text-[var(--color-muted)] text-xs mt-0.5">{t.title}</p>
-                <Badge variant="outline" className="mt-2 text-[10px] font-mono">
+              <div className="border-t border-[var(--color-border)] pt-4">
+                <p className="text-[var(--color-text)] font-semibold">{t.name}</p>
+                <p className="text-[var(--color-muted)] text-sm mt-0.5">{t.title}</p>
+                <Badge variant="outline" className="mt-3 text-[11px] font-medium">
                   {t.industry}
                 </Badge>
               </div>

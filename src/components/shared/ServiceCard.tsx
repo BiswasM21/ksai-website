@@ -15,7 +15,7 @@ interface ServiceCardProps {
  * Reusable service card component with icon, title, description, and link.
  * Features hover effects and smooth transitions.
  */
-export function ServiceCard({ title, description, icon, href }: ServiceCardProps) {
+export default function ServiceCard({ title, description, icon, href }: ServiceCardProps) {
   return (
     <Link
       href={href}

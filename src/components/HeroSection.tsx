@@ -7,8 +7,8 @@ const HeroFuturistic = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="h-screen w-full bg-[#060c1a] flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-[#3b82f6] border-t-transparent rounded-full animate-spin" />
+      <div className="h-screen w-full bg-[var(--color-bg)] flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-[var(--color-accent)] border-t-transparent rounded-full animate-spin" />
       </div>
     ),
   }

@@ -91,7 +91,7 @@ export default function SevaSahayakSection() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: prefersReducedMotion ? 0.01 : 0.8, delay: prefersReducedMotion ? 0 : 0.1 }}
           >
-            <Badge variant="default" className="mb-3 md:mb-4 text-xs font-mono">
+            <Badge variant="default" className="mb-3 md:mb-4 text-xs font-medium">
               PRODUCT
             </Badge>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--color-text)] mb-3 md:mb-4">

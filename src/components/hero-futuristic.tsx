@@ -1,240 +1,146 @@
 "use client";
 
-import React, { useEffect, useMemo, useState, useRef, useCallback } from "react";
-import type { Application } from "@splinetool/runtime";
-import { SplineScene } from "@/components/ui/splite";
-import { Spotlight } from "@/components/ui/spotlight";
-
-const SPLINE_SCENE_URL = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
-const HEAD_OBJECT_NAME = "Head";
-
-// Detect mobile/low-power devices
-const isMobile = () => {
-  if (typeof window === "undefined") return false;
-  return (
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-    window.innerWidth < 768
-  );
-};
+import { useEffect, useState, useCallback } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 export const HeroFuturistic = () => {
-  const titleWords = "AI Solutions Built for the Rest".split(" ");
-  const titleLine2 = "by the Best".split(" ");
+  const prefersReducedMotion = useReducedMotion();
+  const [isMounted, setIsMounted] = useState(false);
 
-  const appRef = useRef<Application | null>(null);
-  const headRef = useRef<{ rotation: { x: number; y: number; z: number } } | null>(null);
-  const mouseRef = useRef({ x: 0, y: 0 });
-  const rafRef = useRef<number | null>(null);
-
-  const [isMobileDevice, setIsMobileDevice] = useState(false);
-  const [visibleWords, setVisibleWords] = useState(0);
-  const [visibleWords2, setVisibleWords2] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  // Detect mobile and reduced motion preference
   useEffect(() => {
-    setIsMobileDevice(isMobile());
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
+    setIsMounted(true);
   }, []);
 
-  // Initialize animations based on device
-  useEffect(() => {
-    // Skip animations on mobile or if user prefers reduced motion
-    if (isMobileDevice || prefersReducedMotion) {
-      setVisibleWords(titleWords.length);
-      setVisibleWords2(titleLine2.length);
-      return;
-    }
-    // Desktop: show words one by one
-    if (visibleWords < titleWords.length) {
-      const timeout = setTimeout(() => setVisibleWords(visibleWords + 1), 400);
-      return () => clearTimeout(timeout);
-    } else if (visibleWords2 < titleLine2.length) {
-      const timeout = setTimeout(() => setVisibleWords2(visibleWords2 + 1), 300);
-      return () => clearTimeout(timeout);
-    }
-  }, [visibleWords, visibleWords2, titleWords.length, titleLine2.length, isMobileDevice, prefersReducedMotion]);
-
-  const handleLoad = useCallback((app: Application) => {
-    appRef.current = app;
-    const head = app.findObjectByName(HEAD_OBJECT_NAME);
-    if (head) {
-      headRef.current = head as { rotation: { x: number; y: number; z: number } };
-    }
+  const handleExploreClick = useCallback(() => {
+    document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  // Mouse tracking - only on desktop
-  useEffect(() => {
-    if (isMobileDevice) return;
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseRef.current.y = -((e.clientY / window.innerHeight) * 2 - 1);
-    };
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [isMobileDevice]);
+  const handleContactClick = useCallback(() => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  }, []);
 
-  // Head animation loop - STOPPED on mobile
-  useEffect(() => {
-    // Don't run animation loop on mobile
-    if (isMobileDevice || prefersReducedMotion) {
-      return;
-    }
-
-    let lastTime = 0;
-    const targetFPS = 30;
-    const interval = 1000 / targetFPS;
-
-    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-
-    const animate = (time: number) => {
-      if (time - lastTime >= interval) {
-        lastTime = time;
-        const head = headRef.current;
-        if (head) {
-          const targetX = -mouseRef.current.y * 0.4;
-          const targetY = mouseRef.current.x * 0.6;
-          head.rotation.x = lerp(head.rotation.x, targetX, 0.08);
-          head.rotation.y = lerp(head.rotation.y, targetY, 0.08);
-        }
-      }
-      rafRef.current = requestAnimationFrame(animate);
-    };
-    rafRef.current = requestAnimationFrame(animate);
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, [isMobileDevice, prefersReducedMotion]);
-
-  const delays = useMemo(
-    () => titleWords.map(() => Math.random() * 0.07),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
-  const delays2 = useMemo(
-    () => titleLine2.map(() => Math.random() * 0.07),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
-
-  const shouldAnimate = !isMobileDevice && !prefersReducedMotion;
+  if (!isMounted) {
+    return (
+      <div className="relative min-h-screen flex items-center justify-center bg-[var(--color-bg)]">
+        <div className="w-6 h-6 border-2 border-[var(--color-accent)] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-[var(--color-surface-2)]">
-      {/* Vignette overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 z-20"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, transparent 30%, rgba(6,12,26,0.85) 100%)",
-        }}
-      />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--color-bg)]">
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 grid-pattern" />
 
-      {/* Spline 3D scene — background layer */}
-      <div className="absolute inset-0 z-10">
-        <SplineScene
-          scene={SPLINE_SCENE_URL}
-          className="w-full h-full"
-          onSplineLoad={handleLoad}
-        />
-      </div>
+      {/* Ambient orbs - very subtle depth */}
+      <div className="absolute top-1/4 -left-40 w-[500px] h-[500px] orb orb-indigo" />
+      <div className="absolute bottom-1/4 -right-40 w-[400px] h-[400px] orb orb-violet" />
 
-      {/* Spotlight glow effect */}
-      <Spotlight
-        className="-top-40 left-1/2 -translate-x-1/2"
-        fill="white"
-      />
+      {/* Content */}
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        {/* Status badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: 0.1 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] text-sm text-[var(--color-muted)]">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span>Delivering AI solutions across India</span>
+          </span>
+        </motion.div>
 
-      {/* Screen-reader H1 with target keywords */}
-      <h1 className="sr-only">
-        Custom AI Agents and AI Solutions — Kalinga Sovereign AI builds AI agents,
-        workflow automation, and intelligent applications for SMEs, enterprises,
-        and institutions across India and the Global South
-      </h1>
+        {/* Main heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay: 0.2 }}
+          className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-[var(--color-text)] leading-[1.1]"
+        >
+          AI That Works
+          <br />
+          <span className="gradient-text">For Your Business</span>
+        </motion.h1>
 
-      {/* Text layer */}
-      <div
-        className="absolute inset-0 z-40 flex flex-col items-center justify-center px-4 md:px-6"
-        style={{ paddingTop: isMobileDevice ? "45vh" : "55vh" }}
-      >
-        {/* Title line 1 - Smaller on mobile */}
-        <div className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl uppercase tracking-wide text-center leading-tight md:leading-normal">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-5">
-            {titleWords.map((word, index) => (
-              <div
-                key={`l1-${index}`}
-                className={`${index < visibleWords ? (shouldAnimate ? "fade-in" : "opacity-100") : "opacity-0"} ${shouldAnimate ? "shimmer-text" : "text-white"}`}
-                style={
-                  shouldAnimate
-                    ? {
-                        animationDelay: `${index * 0.08 + (delays[index] || 0)}s`,
-                        opacity: index < visibleWords ? undefined : 0,
-                      }
-                    : { opacity: index < visibleWords ? 1 : 0 }
-                }
-              >
-                {word}
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Subheading */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: 0.35 }}
+          className="mt-6 text-lg sm:text-xl text-[var(--color-muted)] max-w-xl mx-auto leading-relaxed"
+        >
+          We build custom AI agents, automate workflows, and integrate intelligence
+          into your systems — from strategy to production.
+        </motion.p>
 
-        {/* Title line 2 - Smaller on mobile */}
-        <div className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl uppercase tracking-wide mt-2 md:mt-4 text-center leading-tight md:leading-normal">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-5">
-            {titleLine2.map((word, index) => (
-              <div
-                key={`l2-${index}`}
-                className={`${index < visibleWords2 ? (shouldAnimate ? "fade-in" : "opacity-100") : "opacity-0"} ${shouldAnimate ? "shimmer-text" : "text-white"}`}
-                style={
-                  shouldAnimate
-                    ? {
-                        animationDelay: `${index * 0.08 + (delays2[index] || 0)}s`,
-                        opacity: index < visibleWords2 ? undefined : 0,
-                      }
-                    : { opacity: index < visibleWords2 ? 1 : 0 }
-                }
-              >
-                {word}
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* CTA buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: 0.5 }}
+          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <button
+            onClick={handleExploreClick}
+            className="group relative px-8 py-4 bg-[var(--color-accent)] text-white font-medium rounded-xl hover:bg-[var(--color-accent-hover)] transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+          >
+            Explore Services
+            <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
+              →
+            </span>
+          </button>
 
-        {/* CTA Button */}
-        <div className="mt-6 md:mt-4 z-50 pointer-events-auto">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-semibold px-6 py-2.5 md:px-8 md:py-3 rounded-full transition-all duration-200 active:scale-95 text-sm md:text-base"
+          <button
+            onClick={handleContactClick}
+            className="px-8 py-4 bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-xl hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200"
           >
             Talk to Us
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-        </div>
+          </button>
+        </motion.div>
 
-        {/* Explore scroll button - hidden on mobile for performance */}
-        <button
-          className={`${isMobileDevice ? "hidden" : "explore-btn"}`}
-          onClick={() => {
-            document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
-          }}
+        {/* Trust indicators */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: 0.7 }}
+          className="mt-20 pt-8 border-t border-[var(--color-border)]"
         >
-          Scroll to explore
-          <span className="explore-arrow">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <path d="M11 5V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              <path d="M6 12L11 17L16 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </span>
-        </button>
+          <p className="text-xs text-[var(--color-muted-dark)] uppercase tracking-widest mb-6">
+            Trusted by enterprises across
+          </p>
+          <div className="flex flex-wrap justify-center gap-6 text-[var(--color-muted)] text-sm font-medium">
+            <span>Healthcare</span>
+            <span className="text-[var(--color-border)]">•</span>
+            <span>Manufacturing</span>
+            <span className="text-[var(--color-border)]">•</span>
+            <span>E-commerce</span>
+            <span className="text-[var(--color-border)]">•</span>
+            <span>Finance</span>
+          </div>
+        </motion.div>
       </div>
-    </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: 0.9 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <button
+          onClick={handleExploreClick}
+          className="flex flex-col items-center gap-2 text-[var(--color-muted-dark)] hover:text-[var(--color-muted)] transition-colors cursor-pointer"
+        >
+          <span className="text-xs uppercase tracking-widest">Scroll</span>
+          <div className="w-5 h-8 border border-[var(--color-border)] rounded-full flex justify-center pt-1.5">
+            <div className="w-1 h-2 bg-[var(--color-accent)] rounded-full animate-bounce" />
+          </div>
+        </button>
+      </motion.div>
+    </section>
   );
 };
 
