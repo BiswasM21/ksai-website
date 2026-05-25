@@ -1,35 +1,27 @@
 import type { Metadata } from "next";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Cpu,
-  Globe,
-  Users,
-  Zap,
-  Shield,
-  Handshake,
-} from "lucide-react";
+import { Target, Lightbulb, Users, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About KSAI",
   description:
-    "Kalinga Sovereign AI builds custom AI solutions for SMEs, enterprises, and institutions. Learn about our mission, approach, and technology.",
+    "Learn about Kalinga Sovereign AI's mission to bring world-class AI, web development, and automation solutions to businesses in India and the Global South.",
   keywords: [
-    "AI solutions company",
-    "AI development India",
-    "custom AI agents",
-    "AI agent development",
-    "Kalinga Sovereign AI about",
-    "AI consulting",
+    "about KSAI",
+    "Kalinga Sovereign AI mission",
+    "AI company Bhubaneswar",
+    "AI solutions India",
     "Global South AI",
+    "custom web development",
+    "AI automation",
+    "robotics solutions",
   ],
   alternates: {
     canonical: "https://kalinga-ai.com/about",
   },
   openGraph: {
-    title: "About Kalinga Sovereign AI — Custom AI Solutions for the Global South",
+    title: "About KSAI — Kalinga Sovereign AI",
     description:
-      "We build custom AI agents, workflow automation, and intelligent applications for SMEs, enterprises, and institutions across India and the Global South.",
+      "We believe every business deserves access to world-class AI solutions. Learn about our mission, story, and values.",
     url: "https://kalinga-ai.com/about",
     siteName: "Kalinga Sovereign AI",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Kalinga Sovereign AI" }],
@@ -38,187 +30,103 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Kalinga Sovereign AI",
-    description: "Custom AI agents and AI solutions for the Global South.",
+    title: "About KSAI — Kalinga Sovereign AI",
+    description: "World-class AI solutions for businesses in India and the Global South.",
     images: ["/og-image.png"],
   },
 };
 
 const values = [
   {
-    icon: Shield,
-    title: "Sovereign by Design",
-    desc: "AI that runs on your infrastructure, your data, your terms. No vendor lock-in, no data leaving your control.",
+    icon: Target,
+    title: "Precision",
+    description: "We deliver solutions with meticulous attention to detail",
   },
   {
-    icon: Globe,
-    title: "Built for the Global South",
-    desc: "Solutions designed for Indian and emerging market realities — language support, affordability, and local integration first.",
-  },
-  {
-    icon: Zap,
-    title: "Ship to Production",
-    desc: "We don't leave you with a deck. Every engagement ends with working software running in your environment.",
+    icon: Lightbulb,
+    title: "Innovation",
+    description: "We stay at the forefront of technology",
   },
   {
     icon: Users,
-    title: "Client Partnership",
-    desc: "We're not vendors — we're collaborators. We transfer knowledge, document everything, and set your team up to own it.",
+    title: "Partnership",
+    description: "We view every project as a collaboration",
   },
-];
-
-const stack = [
-  "Next.js / React",
-  "Python / FastAPI",
-  "PyTorch / Transformers",
-  "PostgreSQL / Pinecone",
-  "AWS / GCP / On-prem",
-  "LangChain / LlamaIndex",
-  "React Three Fiber",
-  "Airflow / Modal",
+  {
+    icon: Shield,
+    title: "Reliability",
+    description: "You can count on us for consistent quality",
+  },
 ];
 
 export default function AboutPage() {
   return (
     <div className="pt-24 pb-24">
-      {/* Hero */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <Badge variant="default" className="mb-6 text-xs font-mono">
-          ABOUT US
-        </Badge>
-        <h1 className="text-4xl md:text-6xl font-bold text-[var(--color-text)] mb-6 max-w-3xl">
-          We build AI that{" "}
-          <span className="gradient-text">ships and performs</span>
-        </h1>
-        <p className="text-[var(--color-muted)] text-lg md:text-xl max-w-2xl leading-relaxed">
-          Kalinga Sovereign AI was founded with one mission: make powerful AI
-          accessible and practical for businesses in India and the Global South.
-          Not as a buzzword, but as working infrastructure.
-        </p>
+      {/* Page Header */}
+      <section className="container section">
+        <div className="text-center max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            About KSAI
+          </h1>
+          <p className="text-lg md:text-xl text-[var(--color-text-secondary)] leading-relaxed">
+            Building world-class technology solutions from Bhubaneswar, Odisha — empowering businesses across India and the Global South.
+          </p>
+        </div>
       </section>
 
-      {/* Mission */}
-      <section className="bg-[var(--color-surface-2)] border-y border-[var(--color-border)] py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <Badge variant="secondary" className="mb-4 text-xs font-mono">
-                OUR MISSION
-              </Badge>
-              <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-4">
-                Democratize sovereign AI for the Global South
-              </h2>
-              <p className="text-[var(--color-muted)] leading-relaxed mb-4">
-                The AI revolution is happening — but most of it is built for
-                Silicon Valley startups and Fortune 500 companies. SMEs,
-                hospitals, manufacturers, and government bodies in India and
-                across the Global South are being left out.
-              </p>
-              <p className="text-[var(--color-muted)] leading-relaxed">
-                We change that. By building on open models, deploying on local
-                infrastructure, and charging fair prices for real work — we make
-                AI that serves real people, not just demos.
-              </p>
+      {/* Mission Section */}
+      <section className="section bg-[var(--color-surface)]">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-[var(--color-accent-subtle)] text-[var(--color-accent)] text-sm font-semibold mb-6">
+              Our Mission
             </div>
-            <div>
-              <Badge variant="secondary" className="mb-4 text-xs font-mono">
-                OUR APPROACH
-              </Badge>
-              <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-4">
-                Practical AI, not proof-of-concept
-              </h2>
-              <p className="text-[var(--color-muted)] leading-relaxed mb-4">
-                We start with the business problem, not the technology. We
-                validate with data, build incrementally, and ship to production —
-                not to a presentation.
-              </p>
-              <p className="text-[var(--color-muted)] leading-relaxed">
-                Our engagements are scoped with clear deliverables, timelines, and
-                success metrics. We communicate weekly, hand over documentation
-                at the end, and train your team to own the system.
-              </p>
-            </div>
+            <p className="text-lg md:text-xl text-[var(--color-text-secondary)] leading-relaxed">
+              We believe that every business deserves access to world-class websites, applications, AI automation, and robotics solutions. Founded in Bhubaneswar, Odisha, we&apos;re building a team that combines deep technical expertise with a genuine passion for solving real-world problems.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-20 bg-[var(--color-bg)]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4 text-xs font-mono">
-              WHAT WE STAND FOR
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-text)]">
-              How we work
-            </h2>
+      {/* Story Section */}
+      <section className="section">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-semibold mb-6">
+              Our Story
+            </div>
+            <p className="text-lg md:text-xl text-[var(--color-text-secondary)] leading-relaxed">
+              Kalinga Sovereign AI was born from a simple observation: the best technology shouldn&apos;t be reserved for the biggest companies. Too many promising businesses in India and the Global South were being left behind in the AI revolution. We set out to change that by combining expertise in web development, mobile applications, AI, and robotics.
+            </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="section bg-[var(--color-surface)]">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Core Values</h2>
+            <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+              The principles that guide everything we do.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {values.map((value) => {
               const Icon = value.icon;
               return (
-                <Card key={value.title}>
-                  <CardContent className="p-6">
-                    <div className="w-10 h-10 rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 flex items-center justify-center mb-4">
-                      <Icon className="w-5 h-5 text-[var(--color-accent)]" />
-                    </div>
-                    <h3 className="text-[var(--color-text)] font-semibold mb-2">
-                      {value.title}
-                    </h3>
-                    <p className="text-[var(--color-muted)] text-sm leading-relaxed">
-                      {value.desc}
-                    </p>
-                  </CardContent>
-                </Card>
+                <div key={value.title} className="card text-center">
+                  <div className="w-14 h-14 rounded-full bg-[var(--color-accent-subtle)] border border-[var(--color-accent)]/20 flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-7 h-7 text-[var(--color-accent)]" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
+                  <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+                    {value.description}
+                  </p>
+                </div>
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* Tech Stack */}
-      <section className="py-20 bg-[var(--color-surface-2)] border-y border-[var(--color-border)]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4 text-xs font-mono">
-              TECHNOLOGY
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-text)] mb-3">
-              Our Stack
-            </h2>
-            <p className="text-[var(--color-muted)] max-w-xl mx-auto">
-              Modern tools, battle-tested patterns. We pick the right tool for
-              each problem — not the trendiest one.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            {stack.map((tech) => (
-              <Badge key={tech} variant="outline" className="px-4 py-2 text-sm font-mono">
-                <Cpu className="w-3 h-3 mr-2 inline" />
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Partnership CTA */}
-      <section className="py-20 bg-[var(--color-bg)]">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <Handshake className="w-12 h-12 text-[var(--color-accent)] mx-auto mb-4" />
-          <h2 className="text-3xl font-bold text-[var(--color-text)] mb-4">
-            Let&apos;s build together
-          </h2>
-          <p className="text-[var(--color-muted)] mb-8 leading-relaxed">
-            If you have a project in mind — or just want to explore what's
-            possible — reach out. We offer a free 30-minute scoping call.
-          </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-[var(--color-text)] font-semibold px-8 py-3 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/30"
-          >
-            Start a Conversation
-          </a>
         </div>
       </section>
     </div>
