@@ -77,12 +77,8 @@ export const metadata: Metadata = {
     images: ["/images/ksai-favicon.png"],
   },
   icons: {
-    icon: [
-      { url: "/images/ksai-favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/images/ksai-favicon-16.png", sizes: "16x16", type: "image/png" },
-      { url: "/images/ksai-favicon.png", sizes: "any", type: "image/png" },
-    ],
-    apple: "/images/ksai-favicon.png",
+    icon: "/images/ksai-favicon.svg",
+    apple: "/images/ksai-favicon.svg",
   },
   robots: {
     index: true,
@@ -109,8 +105,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} ${bebasNeue.variable}`}>
       <head>
-        <link rel="icon" href="/images/ksai-favicon-32.png" sizes="32x32" type="image/png" />
-        <link rel="icon" href="/images/ksai-favicon.png" sizes="any" type="image/png" />
+        <link rel="icon" href="/images/ksai-favicon.svg" type="image/svg+xml" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
