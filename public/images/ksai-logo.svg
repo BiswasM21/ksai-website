@@ -1,0 +1,21 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Outer shield gradient -->
+    <linearGradient id="shieldGradient" x1="24" y1="0" x2="24" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#1E40AF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Shield -->
+  <path d="M24 2L4 10V22C4 33.05 12.65 43.24 24 46C35.35 43.24 44 33.05 44 22V10L24 2Z" fill="url(#shieldGradient)"/>
+
+  <!-- Inner Shield (slightly smaller, dark blue) -->
+  <path d="M24 6L8 12.5V22C8 30.84 15.16 38.96 24 42C32.84 38.96 40 30.84 40 22V12.5L24 6Z" fill="#1E3A5F"/>
+
+  <!-- K Monogram - Bold white -->
+  <text x="13" y="32" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="18" fill="white">K</text>
+
+  <!-- i Monogram - Light blue -->
+  <text x="27" y="32" font-family="Inter, system-ui, sans-serif" font-weight="500" font-size="18" fill="#93C5FD">i</text>
+</svg>
