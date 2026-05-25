@@ -1,17 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { Logo } from "@/components/shared/Logo";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navLinks = [
-  { href: "/#services", label: "Services" },
-  { href: "/#work", label: "Work" },
-  { href: "/#seva-sahayak", label: "Seva Sahayak" },
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -33,26 +32,16 @@ export default function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[var(--color-bg)]/95 backdrop-blur-md border-b border-[var(--color-border)] shadow-lg shadow-black/20"
+          ? "bg-[var(--color-surface)]/95 backdrop-blur-md border-b border-[var(--color-border)] shadow-sm"
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <Image
-            src="/images/kalinga-logo-optimized.png"
-            alt="Kalinga Sovereign AI"
-            width={32}
-            height={32}
-            className="w-8 h-8 object-contain"
-            loading="eager"
-          />
-          <span className="font-semibold text-white tracking-tight group-hover:text-[var(--color-accent)] transition-colors hidden sm:block">
+        <Link href="/" className="flex items-center gap-3 group">
+          <Logo size={36} className="transition-transform group-hover:scale-105" />
+          <span className="font-semibold text-[var(--color-text)] tracking-tight group-hover:text-[var(--color-accent)] transition-colors hidden sm:block">
             Kalinga Sovereign AI
-          </span>
-          <span className="font-semibold text-white tracking-tight group-hover:text-[var(--color-accent)] transition-colors sm:hidden">
-            KSAI
           </span>
         </Link>
 
@@ -62,7 +51,7 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className="px-3 py-2 text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors rounded-md hover:bg-white/5"
+              className="px-3 py-2 text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors rounded-lg hover:bg-[var(--color-surface-2)]"
             >
               {link.label}
             </Link>
@@ -73,14 +62,23 @@ export default function Nav() {
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] transition-colors"
+            className="p-2 rounded-lg text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-2)] transition-colors"
             aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           >
-            {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            {theme === "dark" ? (
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <circle cx="12" cy="12" r="5" />
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
           </button>
           <Link href="/contact">
-            <Button size="sm" className="font-semibold">
-              Talk to Us
+            <Button size="sm" className="font-medium bg-[var(--color-accent)] hover:bg-[var(--color-accent)]/90 text-white border-0">
+              Get in Touch
             </Button>
           </Link>
         </div>
@@ -88,7 +86,7 @@ export default function Nav() {
         {/* Mobile nav */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon" className="text-white">
+            <Button variant="ghost" size="icon" className="text-[var(--color-text)]">
               <Menu className="w-5 h-5" />
             </Button>
           </SheetTrigger>
@@ -109,15 +107,24 @@ export default function Nav() {
               ))}
               <button
                 onClick={() => { toggleTheme(); setOpen(false); }}
-                className="flex items-center gap-3 p-2 rounded-lg text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
+                className="flex items-center gap-3 p-2 text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
                 aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
               >
-                {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                {theme === "dark" ? (
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <circle cx="12" cy="12" r="5" />
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                  </svg>
+                )}
                 {theme === "dark" ? "Light Mode" : "Dark Mode"}
               </button>
               <Link href="/contact" onClick={() => setOpen(false)}>
-                <Button className="w-full font-semibold mt-4">
-                  Talk to Us
+                <Button className="w-full font-medium mt-4 bg-[var(--color-accent)] hover:bg-[var(--color-accent)]/90 text-white border-0">
+                  Get in Touch
                 </Button>
               </Link>
             </div>

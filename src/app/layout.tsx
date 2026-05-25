@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Bebas_Neue } from "next/font/google";
 import { cookies } from "next/headers";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import Nav from "@/components/layout/Nav";
+import Footer from "@/components/layout/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
 
 const inter = Inter({
@@ -104,15 +104,13 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies();
   const storedTheme = cookieStore.get("ksai-theme")?.value;
-  const initialTheme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : "dark";
+  const initialTheme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : "light";
 
   return (
     <html lang="en" data-theme={initialTheme} className={`${inter.variable} ${jetbrainsMono.variable} ${bebasNeue.variable}`}>
       <head>
         <link rel="icon" href="/images/ksai-favicon-32.png" sizes="32x32" type="image/png" />
         <link rel="icon" href="/images/ksai-favicon.png" sizes="any" type="image/png" />
-        <link rel="preconnect" href="https://prod.spline.design" />
-        <link rel="dns-prefetch" href="https://prod.spline.design" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -192,7 +190,7 @@ export default async function RootLayout({
             __html: `
               (function() {
                 var stored = localStorage.getItem('ksai-theme');
-                var theme = (stored === 'light') ? 'light' : 'dark';
+                var theme = (stored === 'dark') ? 'dark' : 'light';
                 document.documentElement.setAttribute('data-theme', theme);
                 // Also sync to cookie so Next.js server can read it
                 document.cookie = 'ksai-theme=' + theme + ';path=/;max-age=31536000;SameSite=Lax';
@@ -201,7 +199,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col text-white antialiased">
+      <body className="min-h-screen flex flex-col antialiased">
         <ThemeProvider initialTheme={initialTheme}>
           <Nav />
           <main className="flex-1">{children}</main>
