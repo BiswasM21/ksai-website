@@ -1,6 +1,6 @@
 # Work — Kalinga Sovereign AI Case Studies
 
-**Website:** https://kalinga-ai.com/#work
+**Website:** https://kalingasovereignai.com/#work
 
 Real problems. Measurable outcomes. Every project ships to production — not just to a demo deck.
 
@@ -57,8 +57,8 @@ Real problems. Measurable outcomes. Every project ships to production — not ju
 
 ## Start Your Project
 
-View our services: https://kalinga-ai.com/#services
-Contact us: https://kalinga-ai.com/contact
+View our services: https://kalingasovereignai.com/#services
+Contact us: https://kalingasovereignai.com/contact
 
 ---
 

@@ -7,7 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/admin/"],
     },
-    sitemap: "https://kalinga-ai.com/sitemap.xml",
-    host: "https://kalinga-ai.com",
+    sitemap: "https://kalingasovereignai.com/sitemap.xml",
   };
 }

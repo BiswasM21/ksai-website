@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Bebas_Neue } from "next/font/google";
-import { cookies } from "next/headers";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
+import { LanguageProvider } from "@/components/LanguageContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,67 +18,71 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const bebasNeue = Bebas_Neue({
-  variable: "--font-bebas",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: {
-    default: "Kalinga Sovereign AI — Sovereign AI Solutions for the Global South",
+    default: "Kalinga Sovereign AI — Web Dev, App Dev & AI Automation Company",
     template: "%s | Kalinga Sovereign AI",
   },
   description:
-    "Kalinga Sovereign AI builds custom AI integrations, workflow automation, and intelligent applications for SMEs, enterprises, and institutions across India and the Global South.",
+    "Expert web development, mobile app development & AI automation for startups & SMEs. Custom solutions with React, Next.js, Flutter & cutting-edge AI. Based in Bhubaneswar, serving globally.",
   keywords: [
+    "web development company",
+    "app development company",
+    "AI automation services",
+    "custom software development",
+    "React developer",
+    "Next.js development",
+    "Flutter app development",
+    "AI chatbot development",
     "custom AI agents",
-    "AI agent development",
-    "AI solutions",
-    "AI automation",
-    "artificial intelligence",
-    "AI integration",
-    "workflow automation",
-    "custom AI development",
-    "AI consulting",
-    "India AI",
-    "Global South AI",
-    "Sovereign AI",
-    "Kalinga AI",
-    "AI development company",
-    "AI bot development",
+    "deep tech company",
+    "AI company India",
+    "software development company",
+    "startup development services",
+    "SME technology solutions",
+    "mobile app development India",
+    "web design company",
+    "digital transformation",
+    "AI integration services",
+    "business automation",
+    "custom software Bhubaneswar",
   ],
   authors: [{ name: "Kalinga Sovereign AI Pvt. Ltd." }],
   creator: "Kalinga Sovereign AI Pvt. Ltd.",
-  metadataBase: new URL("https://kalinga-ai.com"),
+  publisher: "Kalinga Sovereign AI Pvt. Ltd.",
+  metadataBase: new URL("https://kalingasovereignai.com"),
+  verification: {
+    // google: "your-google-verification-code", // Add when ready
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://kalinga-ai.com",
+    url: "https://kalingasovereignai.com",
     siteName: "Kalinga Sovereign AI",
-    title: "Kalinga Sovereign AI — Sovereign AI Solutions for the Global South",
+    title: "Kalinga Sovereign AI — Web Dev, App Dev & AI Automation Company",
     description:
-      "Custom AI integrations built for scale, speed, and results. Serving SMEs and enterprises across India and the Global South.",
+      "Expert web development, mobile app development & AI automation for startups & SMEs. Custom solutions built with cutting-edge technology.",
     images: [
       {
-        url: "/images/ksai-favicon.png",
-        width: 512,
-        height: 512,
-        alt: "Kalinga Sovereign AI",
+        url: "/images/ksai-logo-clean.png",
+        width: 500,
+        height: 500,
+        alt: "Kalinga Sovereign AI - Web Development, App Development & AI Automation",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kalinga Sovereign AI — Sovereign AI Solutions for the Global South",
+    title: "Kalinga Sovereign AI — Web Dev, App Dev & AI Automation",
     description:
-      "Custom AI integrations built for scale, speed, and results.",
-    images: ["/images/ksai-favicon.png"],
+      "Expert web development, mobile apps & AI automation for startups & SMEs. Based in Bhubaneswar.",
+    images: ["/images/ksai-logo-clean.png"],
+    creator: "@Kalinga_Sov_Ai",
   },
   icons: {
-    icon: "/images/ksai-favicon.svg",
-    apple: "/images/ksai-favicon.svg",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
   robots: {
     index: true,
@@ -91,101 +95,162 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  alternates: {
+    canonical: "https://kalingasovereignai.com",
+    languages: {
+      "en-IN": "https://kalingasovereignai.com",
+      "hi": "https://kalingasovereignai.com?lang=hi",
+    },
+  },
 };
 
-export default async function RootLayout({
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://kalingasovereignai.com/#organization",
+      name: "Kalinga Sovereign AI Pvt. Ltd.",
+      url: "https://kalingasovereignai.com",
+      logo: "https://kalingasovereignai.com/images/ksai-logo-clean.png",
+      image: "https://kalingasovereignai.com/images/ksai-logo-clean.png",
+      description: "Expert web development, mobile app development & AI automation for startups & SMEs. Custom software solutions with cutting-edge technology.",
+      foundingDate: "2025",
+      foundingLocation: "Bhubaneswar, Odisha, India",
+      numberOfEmployees: {
+        "@type": "QuantitativeValue",
+        value: "2-10",
+      },
+      knowsAbout: [
+        "Web Development",
+        "Mobile App Development",
+        "AI Automation",
+        "Custom Software Development",
+        "React",
+        "Next.js",
+        "Flutter",
+        "AI Agents",
+      ],
+      areaServed: [
+        { "@type": "Country", name: "India" },
+        { "@type": "Country", name: "Global" },
+      ],
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Bhubaneswar",
+        addressLocality: "Bhubaneswar",
+        addressRegion: "Odisha",
+        postalCode: "751001",
+        addressCountry: "IN",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        email: "Kalingasovereignai@gmail.com",
+        availableLanguage: ["English", "Hindi"],
+      },
+      sameAs: [
+        "https://linkedin.com/company/kalinga-sovereign-ai",
+        "https://x.com/Kalinga_Sov_Ai",
+        "https://www.instagram.com/kalingasovereignai/",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kalingasovereignai.com/#website",
+      url: "https://kalingasovereignai.com",
+      name: "Kalinga Sovereign AI",
+      publisher: { "@id": "https://kalingasovereignai.com/#organization" },
+      description: "Expert web development, mobile app development & AI automation for startups & SMEs.",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://kalingasovereignai.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://kalingasovereignai.com/#localbusiness",
+      name: "Kalinga Sovereign AI Pvt. Ltd.",
+      image: "https://kalingasovereignai.com/images/ksai-logo-clean.png",
+      url: "https://kalingasovereignai.com",
+      telephone: "+91-9692000359",
+      email: "Kalingasovereignai@gmail.com",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Bhubaneswar",
+        addressRegion: "Odisha",
+        addressCountry: "IN",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        addressCountry: "IN",
+      },
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "09:00",
+        closes: "18:00",
+      },
+      priceRange: "$$",
+      serviceType: [
+        "Web Development",
+        "App Development",
+        "AI Automation",
+        "Custom Software Development",
+      ],
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://kalingasovereignai.com/#professional",
+      name: "Kalinga Sovereign AI",
+      description: "Technology consulting and software development services for startups and SMEs.",
+      provider: { "@id": "https://kalingasovereignai.com/#organization" },
+      areaServed: "Worldwide",
+      serviceType: "Software Development",
+    },
+  ],
+};
+
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const storedTheme = cookieStore.get("ksai-theme")?.value;
-  const initialTheme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : "dark";
-
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} ${bebasNeue.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
-        <link rel="icon" href="/images/ksai-favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Kalinga Sovereign AI Pvt. Ltd.",
-              url: "https://kalinga-ai.com",
-              logo: "https://kalinga-ai.com/images/kalinga-logo.png",
-              description:
-                "Kalinga Sovereign AI builds custom AI agents, workflow automation, and intelligent applications for SMEs, enterprises, and institutions across India and the Global South.",
-              foundingDate: "2024",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Bhubaneswar",
-                addressRegion: "Odisha",
-                addressCountry: "IN",
-              },
-              contactPoint: {
-                "@type": "ContactPoint",
-                email: "Kalingasovereignai@gmail.com",
-                contactType: "customer service",
-              },
-              sameAs: [
-                "https://linkedin.com/company/kalinga-sovereign-ai",
-                "https://x.com/Kalinga_Sov_Ai",
-                "https://www.instagram.com/kalingasovereignai/",
-              ],
-              knowsAbout: [
-                "Artificial Intelligence",
-                "Custom AI Agent Development",
-                "Workflow Automation",
-                "LLM Integration",
-                "AI Consulting",
-              ],
-              areaServed: [
-                { "@type": "Country", name: "India" },
-                { "@type": "Place", name: "Global South" },
-              ],
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <script
-          type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Service",
-              name: "Custom AI Agent Development",
-              description:
-                "We build custom AI agents that run 24/7 — automating workflows, answering queries, processing documents, and integrating with your existing systems. Built for SMEs, enterprises, and institutions.",
-              provider: {
-                "@type": "Organization",
-                name: "Kalinga Sovereign AI Pvt. Ltd.",
-                url: "https://kalinga-ai.com",
-              },
-              serviceType: "Custom AI Agent Development",
-              areaServed: [
-                { "@type": "Country", name: "India" },
-                { "@type": "Place", name: "Global South" },
-              ],
-              hasOfferCatalog: {
-                "@type": "OfferCatalog",
-                name: "AI Services",
-                itemListElement: [
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Integration" } },
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Workflow Automation" } },
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom App Development" } },
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Consulting" } },
-                ],
-              },
-            }),
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('ksai-theme');
+                  if (!theme || (theme !== 'light' && theme !== 'dark')) {
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  }
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  }
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch (e) {}
+              })();
+            `,
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col antialiased">
-        <ThemeProvider initialTheme={initialTheme}>
-          <Nav />
-          <main className="flex-1">{children}</main>
-          <Footer />
+      <body className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased">
+        <ThemeProvider>
+          <LanguageProvider>
+            <Nav />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

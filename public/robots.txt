@@ -1,0 +1,44 @@
+# Kalinga Sovereign AI - robots.txt
+# https://kalingasovereignai.com
+
+User-agent: *
+Allow: /
+
+# Disallow admin/api routes
+Disallow: /api/
+Disallow: /_next/
+Disallow: /_redirects
+
+# AI Crawlers - Welcome!
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Sitemap
+Sitemap: https://kalingasovereignai.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

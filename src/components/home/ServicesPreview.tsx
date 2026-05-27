@@ -1,37 +1,40 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Globe, Smartphone, Brain, Cpu } from "lucide-react";
-import ServiceCard from "@/components/shared/ServiceCard";
+import { Bot, Workflow, Globe, Cpu, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const services = [
   {
-    icon: <Globe className="w-7 h-7 text-[var(--color-primary)]" />,
-    title: "Website Building",
-    description:
-      "Modern, responsive websites built with the latest technologies. From landing pages to complex web applications, we create digital experiences that convert.",
-    href: "/services#website",
+    icon: Bot,
+    title: "AI Agents & Chatbots",
+    description: "Deploy autonomous AI agents that comprehend context, learn from interactions, and handle complex queries 24/7. Built with advanced LLM technology.",
+    href: "/services#ai-agents",
   },
   {
-    icon: <Smartphone className="w-7 h-7 text-[var(--color-primary)]" />,
-    title: "App Building",
-    description:
-      "Cross-platform mobile applications that deliver native-like experiences. iOS, Android, or Progressive Web Apps—we build for your audience.",
-    href: "/services#app",
+    icon: Workflow,
+    title: "Process Automation",
+    description: "Transform operational efficiency by automating complex workflows. From document processing to customer onboarding, we eliminate manual bottlenecks.",
+    href: "/services#automation",
   },
   {
-    icon: <Brain className="w-7 h-7 text-[var(--color-primary)]" />,
-    title: "AI Automations",
-    description:
-      "Intelligent automation powered by machine learning. Streamline workflows, automate repetitive tasks, and unlock insights from your data.",
-    href: "/services#ai",
+    icon: Sparkles,
+    title: "Website Development",
+    description: "Craft exceptional digital experiences that captivate visitors and drive conversions. Enterprise-grade applications with modern frameworks.",
+    href: "/services#web-development",
   },
   {
-    icon: <Cpu className="w-7 h-7 text-[var(--color-primary)]" />,
-    title: "Robotics Solutions",
-    description:
-      "Custom robotics systems and IoT integrations. From industrial automation to smart systems, we engineer solutions that move your business forward.",
-    href: "/services#robotics",
+    icon: Globe,
+    title: "Web & Mobile Apps",
+    description: "Engineer fast, beautiful, and scalable applications. From MVPs to enterprise systems, we deliver software that users trust.",
+    href: "/services#apps",
+  },
+  {
+    icon: Cpu,
+    title: "Custom AI Solutions",
+    description: "Sentiment analysis, document processing, predictive models, and specialized ML solutions tailored to your industry requirements.",
+    href: "/services#custom-ai",
   },
 ];
 
@@ -39,38 +42,55 @@ export default function ServicesPreview() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    requestAnimationFrame(() => { setMounted(true); });
   }, []);
 
   return (
-    <section id="services" className="section bg-[var(--color-bg)] relative">
+    <section id="services" className="section bg-[var(--color-surface)]">
       <div className="container mx-auto px-6">
-        {/* Section header */}
         <div className={`text-center mb-16 ${mounted ? "animate-fade-in-up" : "opacity-0"}`}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[var(--color-text)] mb-4 tracking-tight">
-            Our Services
+          <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-[var(--color-primary-subtle)] text-[var(--color-primary)] mb-4">
+            What We Build
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-text)] mb-4 tracking-tight">
+            Deep Tech, <span className="gradient-text">Real Results</span>
           </h2>
-          <p className="text-[var(--color-text-secondary)] max-w-xl mx-auto text-lg">
-            Comprehensive technology solutions tailored to your business needs.
+          <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+            We engineer intelligent systems that automate operations and elevate user experiences.
           </p>
         </div>
 
-        {/* Services grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <div
+            <Link
               key={service.title}
-              className={`${mounted ? "animate-fade-in-up" : "opacity-0"}`}
+              href={service.href}
+              className={`group card p-8 ${mounted ? "animate-fade-in-up" : "opacity-0"}`}
               style={{ animationDelay: `${200 + index * 100}ms` }}
             >
-              <ServiceCard
-                title={service.title}
-                description={service.description}
-                icon={service.icon}
-                href={service.href}
-              />
-            </div>
+              <div className="flex items-start gap-5">
+                <div className="p-4 rounded-xl bg-[var(--color-primary-subtle)] group-hover:bg-[var(--color-primary)] transition-colors">
+                  <service.icon className="w-7 h-7 text-[var(--color-primary)] group-hover:text-white transition-colors" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold text-[var(--color-text)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-[var(--color-text-secondary)] leading-relaxed text-sm">
+                    {service.description}
+                  </p>
+                </div>
+              </div>
+            </Link>
           ))}
+        </div>
+
+        <div className={`text-center mt-12 ${mounted ? "animate-fade-in-up delay-500" : "opacity-0"}`}>
+          <Link href="/services">
+            <Button variant="outline" className="btn-secondary">
+              View All Services
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

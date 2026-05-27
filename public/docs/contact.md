@@ -1,6 +1,6 @@
 # Contact Kalinga Sovereign AI
 
-**Get in touch:** https://kalinga-ai.com/contact
+**Get in touch:** https://kalingasovereignai.com/contact
 
 ## Contact Information
 
@@ -28,7 +28,7 @@ We typically take on 2–3 active engagements at a time to ensure quality delive
 
 ## Ready to Start?
 
-Fill out the contact form at https://kalinga-ai.com/contact or reach out directly via email or WhatsApp.
+Fill out the contact form at https://kalingasovereignai.com/contact or reach out directly via email or WhatsApp.
 
 ---
 

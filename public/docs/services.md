@@ -1,6 +1,6 @@
 # Services — Kalinga Sovereign AI
 
-**Website:** https://kalinga-ai.com
+**Website:** https://kalingasovereignai.com
 
 ---
 

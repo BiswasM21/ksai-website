@@ -1,6 +1,6 @@
 # Kalinga Sovereign AI — Custom AI Agents and AI Solutions
 
-**Website:** https://kalinga-ai.com
+**Website:** https://kalingasovereignai.com
 **Email:** Kalingasovereignai@gmail.com
 **Location:** Bhubaneswar, Odisha, India
 
@@ -82,7 +82,7 @@ An AI-powered robot for hospital environments. Deployed in ICU and general ward 
 
 ## Contact
 
-**Get in touch:** https://kalinga-ai.com/contact
+**Get in touch:** https://kalingasovereignai.com/contact
 **Email:** Kalingasovereignai@gmail.com
 **WhatsApp:** +91 96920 00359
 **Availability:** Currently accepting 2–3 new projects

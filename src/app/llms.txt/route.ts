@@ -7,7 +7,7 @@ export const GET = () => {
 
 Kalinga Sovereign AI Pvt. Ltd. builds custom AI agents, workflow automation, and intelligent applications for SMEs, enterprises, and institutions across India and the Global South.
 
-- Website: https://kalinga-ai.com
+- Website: https://kalingasovereignai.com
 - Email: Kalingasovereignai@gmail.com
 - Location: Bhubaneswar, Odisha, India
 - LinkedIn: https://linkedin.com/company/kalinga-sovereign-ai
@@ -78,7 +78,7 @@ Ananya Krishnan, CTO, RetailMart India (E-commerce):
 
 ## Contact
 
-- Website: https://kalinga-ai.com/contact
+- Website: https://kalingasovereignai.com/contact
 - Email: Kalingasovereignai@gmail.com
 - WhatsApp: +91 96920 00359
 - Availability: Currently accepting 2–3 new projects
@@ -86,20 +86,20 @@ Ananya Krishnan, CTO, RetailMart India (E-commerce):
 
 ## Page Structure
 
-- https://kalinga-ai.com — Homepage
-- https://kalinga-ai.com/about — Mission, approach, values, technology stack
-- https://kalinga-ai.com/contact — Contact form, email, WhatsApp, location
-- https://kalinga-ai.com/privacy — Privacy Policy
-- https://kalinga-ai.com/terms — Terms of Service
+- https://kalingasovereignai.com — Homepage
+- https://kalingasovereignai.com/about — Mission, approach, values, technology stack
+- https://kalingasovereignai.com/contact — Contact form, email, WhatsApp, location
+- https://kalingasovereignai.com/privacy — Privacy Policy
+- https://kalingasovereignai.com/terms — Terms of Service
 
 ## Markdown Mirrors
 
-- https://kalinga-ai.com/docs/index.md — Homepage content
-- https://kalinga-ai.com/docs/about.md — About page content
-- https://kalinga-ai.com/docs/contact.md — Contact page content
-- https://kalinga-ai.com/docs/services.md — Services content
-- https://kalinga-ai.com/docs/seva-sahayak.md — Seva Sahayak product
-- https://kalinga-ai.com/docs/work.md — Case studies and work
+- https://kalingasovereignai.com/docs/index.md — Homepage content
+- https://kalingasovereignai.com/docs/about.md — About page content
+- https://kalingasovereignai.com/docs/contact.md — Contact page content
+- https://kalingasovereignai.com/docs/services.md — Services content
+- https://kalingasovereignai.com/docs/seva-sahayak.md — Seva Sahayak product
+- https://kalingasovereignai.com/docs/work.md — Case studies and work
 
 ## Target Keywords
 

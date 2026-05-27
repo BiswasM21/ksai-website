@@ -1,7 +1,7 @@
 # Seva Sahayak — Autonomous Healthcare Robot
 
 **Product by:** Kalinga Sovereign AI Pvt. Ltd.
-**Website:** https://kalinga-ai.com/#seva-sahayak
+**Website:** https://kalingasovereignai.com/#seva-sahayak
 
 ## Overview
 
@@ -53,7 +53,7 @@ Communicates fluently in English, Hindi, Odia, and regional languages — making
 
 ## Contact for Demo
 
-Request a demo: https://kalinga-ai.com/contact
+Request a demo: https://kalingasovereignai.com/contact
 
 ---
 

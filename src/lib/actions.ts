@@ -3,11 +3,10 @@
 export async function submitContactForm(formData: FormData) {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
-  const company = formData.get("company") as string;
-  const budget = formData.get("budget") as string;
+  const company = formData.get("company") as string | null;
+  const budget = formData.get("budget") as string | null;
   const message = formData.get("message") as string;
 
-  // Validate
   if (!name || !email || !message) {
     return { error: "Name, email, and message are required." };
   }
@@ -16,15 +15,9 @@ export async function submitContactForm(formData: FormData) {
     return { error: "Please provide a valid email address." };
   }
 
-  // Log for now — wire Resend / email service here
-  console.log("Contact form submission:", {
-    name,
-    email,
-    company,
-    budget,
-    message,
-    timestamp: new Date().toISOString(),
-  });
+  // In production: Integrate with Resend, SendGrid, or email service
+  // For now: Log the submission (can be viewed in server console)
+  console.log("Contact form submission:", { name, email, company, budget, message });
 
   return {
     success: true,

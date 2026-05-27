@@ -4,7 +4,7 @@
 
 Kalinga Sovereign AI Pvt. Ltd. builds custom AI agents, workflow automation, and intelligent applications for SMEs, enterprises, and institutions across India and the Global South.
 
-- Website: https://kalinga-ai.com
+- Website: https://kalingasovereignai.com
 - Email: Kalingasovereignai@gmail.com
 - Location: Bhubaneswar, Odisha, India
 - LinkedIn: https://linkedin.com/company/kalinga-sovereign-ai
@@ -64,7 +64,7 @@ Next.js, React, Python, FastAPI, PyTorch, Transformers, PostgreSQL, Pinecone, AW
 
 ## Contact
 
-- Website: https://kalinga-ai.com/contact
+- Website: https://kalingasovereignai.com/contact
 - Email: Kalingasovereignai@gmail.com
 - WhatsApp: +91 96920 00359
 - Availability: Currently accepting 2–3 new projects

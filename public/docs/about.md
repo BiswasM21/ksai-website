@@ -1,6 +1,6 @@
 # About Kalinga Sovereign AI
 
-**Website:** https://kalinga-ai.com
+**Website:** https://kalingasovereignai.com
 **Email:** Kalingasovereignai@gmail.com
 **Location:** Bhubaneswar, Odisha, India
 
@@ -61,7 +61,7 @@ We're not vendors — we're collaborators. We transfer knowledge, document every
 
 ## Contact
 
-Start a conversation: https://kalinga-ai.com/contact
+Start a conversation: https://kalingasovereignai.com/contact
 We offer a free 30-minute scoping call.
 
 ---
