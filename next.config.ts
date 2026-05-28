@@ -1,11 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Silence Turbopack lockfile warning
-  turbopack: {
-    root: "/Users/biswas/ksai-website",
-  },
-
   images: {
     remotePatterns: [
       {
@@ -16,22 +11,21 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "i.postimg.cc",
       },
+      {
+        protocol: "https",
+        hostname: "minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com",
+      },
     ],
     formats: ['image/avif', 'image/webp'],
   },
 
-  // Disabled: Strict Mode double-mounts components in dev,
-  // destroying the Three.js scene and stopping useFrame animations
+  // Disabled: Strict Mode double-mounts components in dev
   reactStrictMode: false,
 
   // Memory optimization
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react'],
     optimizeCss: true,
-  },
-
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
   },
 
   // Security headers
