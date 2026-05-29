@@ -12,6 +12,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 const navLinks = [
   { href: "/", labelKey: "nav.home", labelEn: "Home", labelHi: "होम" },
   { href: "/services", labelKey: "nav.services", labelEn: "Services", labelHi: "सेवाएं" },
+  { href: "/products", labelKey: "nav.products", labelEn: "Products", labelHi: "उत्पाद" },
   { href: "/portfolio", labelKey: "nav.portfolio", labelEn: "Portfolio", labelHi: "पोर्टफोलियो" },
   { href: "/blog", labelKey: "nav.blog", labelEn: "Blog", labelHi: "ब्लॉग" },
   { href: "/about", labelKey: "nav.about", labelEn: "About", labelHi: "हमारे बारे में" },

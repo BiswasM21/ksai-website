@@ -24,6 +24,7 @@ const footerLinks = [
   { href: "/", label: "Home" },
   { href: "/privacy-by-physics", label: "Privacy by Physics" },
   { href: "/services", label: "Services" },
+  { href: "/products", label: "Products" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

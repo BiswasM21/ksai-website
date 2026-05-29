@@ -159,7 +159,7 @@ export default function Hero() {
           </Link>
         </div>
         <p className={`text-xs text-[var(--color-text-muted)] mt-4 ${mounted ? "animate-fade-in-up delay-700" : "opacity-0"}`}>
-          B2G &amp; CSR partnerships welcome • NDA-gated investor portal available
+          Investor portal available • NDA-gated
         </p>
 
         <div className={`grid grid-cols-3 gap-8 mt-16 pt-16 border-t border-[var(--color-border)] ${mounted ? "animate-fade-in-up delay-700" : "opacity-0"}`}>
