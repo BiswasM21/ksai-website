@@ -13,7 +13,7 @@ const taglines = [
 ];
 
 const trustIndicators = [
-  { icon: MapPin, text: "Registered in Bhubaneswar, Odisha" },
+  { icon: MapPin, text: "Registered in Odisha" },
   { icon: Shield, text: "Enterprise Grade Performance" },
   { icon: Lock, text: "Data Sovereignty Guaranteed" },
 ];

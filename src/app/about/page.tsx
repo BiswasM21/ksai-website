@@ -7,7 +7,7 @@ import { Target, Eye, Heart, Users, ArrowRight, Shield, Cpu } from "lucide-react
 
 const quickFacts = [
   { label: "Founded", value: "2026" },
-  { label: "Headquarters", value: "Bhubaneswar, Odisha" },
+  { label: "Headquarters", value: "Odisha, Odisha" },
   { label: "CIN", value: "U62013OD2026PTC052646" },
   { label: "Reach", value: "India + Global South" },
 ];
@@ -55,7 +55,7 @@ export default function AboutPage() {
               We Are Building the <span className="gradient-text">Sovereign Ground Layer</span> of AI
             </h1>
             <p className={`text-xl text-[var(--color-text-secondary)] leading-relaxed ${mounted ? "animate-fade-in-up delay-200" : "opacity-0"}`}>
-              Kalinga Sovereign AI Pvt. Ltd. — a DeepTech company headquartered in Bhubaneswar,
+              Kalinga Sovereign AI Pvt. Ltd. — a DeepTech company headquartered in Odisha,
               building offline-first, edge-native AI infrastructure for the populations the cloud forgot.
             </p>
           </div>

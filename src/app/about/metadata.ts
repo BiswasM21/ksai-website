@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: "Learn about Kalinga Sovereign AI, a deep tech startup building sovereign AI infrastructure for the Global South. Meet our team of experts in web development, app development, and AI automation.",
   keywords: [
     "about Kalinga Sovereign AI",
-    "AI company Bhubaneswar",
+    "AI company Odisha",
     "software development company",
     "tech startup India",
     "AI startup team",

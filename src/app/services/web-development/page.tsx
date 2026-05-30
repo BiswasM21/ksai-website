@@ -5,7 +5,7 @@ import { ArrowLeft, Code, Zap, Globe, Smartphone, Server, CheckCircle2 } from "l
 
 export const metadata: Metadata = {
   title: "Custom Web Development Services | React, Next.js, Vue",
-  description: "Expert custom web development services using React, Next.js, Vue. Fast, scalable, SEO-optimized websites and web applications for startups and SMEs. Based in Bhubaneswar.",
+  description: "Expert custom web development services using React, Next.js, Vue. Fast, scalable, SEO-optimized websites and web applications for startups and SMEs. Based in Odisha.",
   keywords: [
     "web development services",
     "custom web development",

@@ -23,7 +23,7 @@ const defaultSettings: Settings = {
   tagline: "Web Dev, App Dev & AI Automation Company",
   email: "Kalingasovereignai@gmail.com",
   whatsapp: "919692000359",
-  address: "Bhubaneswar, Odisha, India",
+  address: "Odisha, Odisha, India",
   linkedin: "https://linkedin.com/company/kalinga-sovereign-ai",
   twitter: "https://x.com/Kalinga_Sov_Ai",
   instagram: "https://www.instagram.com/kalingasovereignai/",

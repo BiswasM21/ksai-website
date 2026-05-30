@@ -5,7 +5,7 @@ import { ArrowLeft, Smartphone, Apple, Globe, Code, Layers, Tablet } from "lucid
 
 export const metadata: Metadata = {
   title: "Mobile App Development Services | Flutter, React Native, iOS, Android",
-  description: "Expert mobile app development using Flutter, React Native, iOS, and Android. Beautiful, performant apps for startups and SMEs. Based in Bhubaneswar, serving globally.",
+  description: "Expert mobile app development using Flutter, React Native, iOS, and Android. Beautiful, performant apps for startups and SMEs. Based in Odisha, serving globally.",
   keywords: [
     "mobile app development",
     "Flutter app development",

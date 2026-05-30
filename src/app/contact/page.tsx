@@ -5,7 +5,7 @@ import { Mail, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact Us — Web Dev, App Dev & AI Automation",
-  description: "Contact Kalinga Sovereign AI for web development, mobile app development, and AI automation projects. Get a free 30-minute consultation. Based in Bhubaneswar, serving globally.",
+  description: "Contact Kalinga Sovereign AI for web development, mobile app development, and AI automation projects. Get a free 30-minute consultation. Based in Odisha, serving globally.",
   keywords: [
     "contact Kalinga Sovereign AI",
     "hire web developer",
@@ -43,7 +43,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Location",
-    value: "Bhubaneswar, Odisha, India",
+    value: "Odisha, Odisha, India",
     href: null,
   },
 ];

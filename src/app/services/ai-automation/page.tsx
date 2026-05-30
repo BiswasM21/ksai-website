@@ -5,7 +5,7 @@ import { ArrowLeft, Bot, Workflow, Cpu, Sparkles, CheckCircle2, Zap, Shield, Bar
 
 export const metadata: Metadata = {
   title: "AI Automation Services | Chatbot, Workflow Automation, AI Integration",
-  description: "Expert AI automation services for businesses. Custom chatbots, workflow automation, and AI integration. Boost efficiency by 40% with our AI solutions. Based in Bhubaneswar.",
+  description: "Expert AI automation services for businesses. Custom chatbots, workflow automation, and AI integration. Boost efficiency by 40% with our AI solutions. Based in Odisha.",
   keywords: [
     "AI automation services",
     "chatbot development",

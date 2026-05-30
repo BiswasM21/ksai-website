@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Kalinga Sovereign AI",
   },
   description:
-    "Expert web development, mobile app development & AI automation for startups & SMEs. Custom solutions with React, Next.js, Flutter & cutting-edge AI. Based in Bhubaneswar, serving globally.",
+    "Expert web development, mobile app development & AI automation for startups & SMEs. Custom solutions with React, Next.js, Flutter & cutting-edge AI. Based in Odisha, serving globally.",
   keywords: [
     "web development company",
     "app development company",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     "digital transformation",
     "AI integration services",
     "business automation",
-    "custom software Bhubaneswar",
+    "custom software Odisha",
   ],
   authors: [{ name: "Kalinga Sovereign AI Pvt. Ltd." }],
   creator: "Kalinga Sovereign AI Pvt. Ltd.",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Kalinga Sovereign AI — Web Dev, App Dev & AI Automation",
     description:
-      "Expert web development, mobile apps & AI automation for startups & SMEs. Based in Bhubaneswar.",
+      "Expert web development, mobile apps & AI automation for startups & SMEs. Based in Odisha.",
     images: ["/images/ksai-logo-clean.png"],
     creator: "@Kalinga_Sov_Ai",
   },
@@ -116,7 +116,7 @@ const jsonLd = {
       image: "https://kalingasovereignai.com/images/ksai-logo-clean.png",
       description: "Expert web development, mobile app development & AI automation for startups & SMEs. Custom software solutions with cutting-edge technology.",
       foundingDate: "2025",
-      foundingLocation: "Bhubaneswar, Odisha, India",
+      foundingLocation: "Odisha, Odisha, India",
       numberOfEmployees: {
         "@type": "QuantitativeValue",
         value: "2-10",
@@ -137,8 +137,8 @@ const jsonLd = {
       ],
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Bhubaneswar",
-        addressLocality: "Bhubaneswar",
+        streetAddress: "Odisha",
+        addressLocality: "Odisha",
         addressRegion: "Odisha",
         postalCode: "751001",
         addressCountry: "IN",
@@ -178,7 +178,7 @@ const jsonLd = {
       email: "Kalingasovereignai@gmail.com",
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Bhubaneswar",
+        addressLocality: "Odisha",
         addressRegion: "Odisha",
         addressCountry: "IN",
       },
