@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Check, Zap, BookOpen, Code, Sparkles, ShoppingCart } from "lucide-react";
+import { ArrowLeft, Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -111,10 +111,11 @@ export default function ProductsPage() {
                     </div>
                   </div>
 
-                  <Button size="lg" className="w-full group">
-                    <ShoppingCart className="w-5 h-5 mr-2" />
-                    Buy Now
-                  </Button>
+                  <Link href={`/products/${product.id}`} className="block">
+                    <Button size="lg" className="w-full">
+                      Buy Now
+                    </Button>
+                  </Link>
 
                   <p className="text-xs text-center text-[var(--color-text-muted)] mt-3">
                     Secure payment via Razorpay • Instant delivery
