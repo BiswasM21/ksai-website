@@ -6,6 +6,7 @@ import { Send, CheckCircle2, Loader2, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useLanguage } from "@/components/LanguageContext";
 
 const WHATSAPP_NUMBER = "919692000359";
 
@@ -25,6 +26,8 @@ function ContactFormInner({ defaultType = "partner" }: ContactFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [formType, setFormType] = useState<"partner" | "investor">(defaultType);
   const searchParams = useSearchParams();
+  const { language } = useLanguage();
+  const isHindi = language === "hi";
 
   useEffect(() => {
     const type = searchParams.get("type");
@@ -179,7 +182,7 @@ function ContactFormInner({ defaultType = "partner" }: ContactFormProps) {
           ) : (
             <>
               <Send className="w-4 h-4" />
-              {formType === "investor" ? "Request Confidential Call" : "Message on WhatsApp"}
+              {formType === "investor" ? "Request Confidential Call" : (isHindi ? "व्हाट्सएप पर संदेश भेजें" : "Message on WhatsApp")}
             </>
           )}
         </Button>

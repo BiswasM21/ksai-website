@@ -14,6 +14,12 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Redirect /about/padhaiway to /vision/padhaiway
+  if (pathname === "/about/padhaiway" || pathname === "/about/padhaiway/") {
+    const url = new URL("/vision/padhaiway", request.url);
+    return NextResponse.redirect(url);
+  }
+
   // Check if accessing admin routes (except /admin itself)
   if (pathname.startsWith("/admin")) {
     // Check for session cookie

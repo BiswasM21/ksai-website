@@ -8,8 +8,8 @@ export const GET = () => {
 Kalinga Sovereign AI Pvt. Ltd. builds custom AI agents, workflow automation, and intelligent applications for SMEs, enterprises, and institutions across India and the Global South.
 
 - Website: https://kalingasovereignai.com
-- Email: Kalingasovereignai@gmail.com
-- Location: Odisha, Odisha, India
+- Email: contact@kalingasovereignai.com
+- Location: Bhubaneswar, Odisha, India
 - LinkedIn: https://linkedin.com/company/kalinga-sovereign-ai
 - X (Twitter): https://x.com/Kalinga_Sov_Ai
 - Instagram: https://www.instagram.com/kalingasovereignai/
@@ -79,7 +79,7 @@ Ananya Krishnan, CTO, RetailMart India (E-commerce):
 ## Contact
 
 - Website: https://kalingasovereignai.com/contact
-- Email: Kalingasovereignai@gmail.com
+- Email: contact@kalingasovereignai.com
 - WhatsApp: +91 96920 00359
 - Availability: Currently accepting 2–3 new projects
 - Offer: Free 30-minute scoping call

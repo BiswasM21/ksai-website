@@ -116,7 +116,7 @@ const jsonLd = {
       image: "https://kalingasovereignai.com/images/ksai-logo-clean.png",
       description: "Expert web development, mobile app development & AI automation for startups & SMEs. Custom software solutions with cutting-edge technology.",
       foundingDate: "2025",
-      foundingLocation: "Odisha, Odisha, India",
+      foundingLocation: "Bhubaneswar, Odisha, India",
       numberOfEmployees: {
         "@type": "QuantitativeValue",
         value: "2-10",
@@ -137,8 +137,8 @@ const jsonLd = {
       ],
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Odisha",
-        addressLocality: "Odisha",
+        streetAddress: "Bhubaneswar",
+        addressLocality: "Bhubaneswar",
         addressRegion: "Odisha",
         postalCode: "751001",
         addressCountry: "IN",
@@ -146,7 +146,7 @@ const jsonLd = {
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer service",
-        email: "Kalingasovereignai@gmail.com",
+        email: "contact@kalingasovereignai.com",
         availableLanguage: ["English", "Hindi"],
       },
       sameAs: [
@@ -175,10 +175,10 @@ const jsonLd = {
       image: "https://kalingasovereignai.com/images/ksai-logo-clean.png",
       url: "https://kalingasovereignai.com",
       telephone: "+91-9692000359",
-      email: "Kalingasovereignai@gmail.com",
+      email: "contact@kalingasovereignai.com",
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Odisha",
+        addressLocality: "Bhubaneswar",
         addressRegion: "Odisha",
         addressCountry: "IN",
       },

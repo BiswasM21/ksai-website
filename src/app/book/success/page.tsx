@@ -160,8 +160,8 @@ function SuccessContent() {
         {/* Contact */}
         <p className="text-sm text-[var(--color-text-muted)] mt-8">
           Questions? Contact us at{" "}
-          <a href="mailto:Kalingasovereignai@gmail.com" className="text-[var(--color-primary)] hover:underline">
-            Kalingasovereignai@gmail.com
+          <a href="mailto:contact@kalingasovereignai.com" className="text-[var(--color-primary)] hover:underline">
+            contact@kalingasovereignai.com
           </a>{" "}
           or{" "}
           <a href="https://wa.me/919692000359" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">

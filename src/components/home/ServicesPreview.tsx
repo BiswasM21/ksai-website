@@ -4,42 +4,55 @@ import { useEffect, useState } from "react";
 import { Bot, Workflow, Globe, Cpu, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/components/LanguageContext";
 
 const services = [
   {
     icon: Bot,
     title: "AI Agents & Chatbots",
+    titleHi: "AI एजेंट्स और चैटबॉट्स",
     description: "Deploy autonomous AI agents that comprehend context, learn from interactions, and handle complex queries 24/7. Built with advanced LLM technology.",
+    descriptionHi: "ऑटोनॉमस AI एजेंट्स जो कॉन्टेक्स्ट समझते हैं, इंटरैक्शन से सीखते हैं, और जटिल क्वेरीज़ को 24/7 हैंडल करते हैं।",
     href: "/services#ai-agents",
   },
   {
     icon: Workflow,
     title: "Process Automation",
+    titleHi: "प्रोसेस ऑटोमेशन",
     description: "Transform operational efficiency by automating complex workflows. From document processing to customer onboarding, we eliminate manual bottlenecks.",
+    descriptionHi: "जटिल वर्कफ्लो को ऑटोमेट करके ऑपरेशनल एफिशिएंसी में बदलाव। डॉक्यूमेंट प्रोसेसिंग से लेकर कस्टमर ऑनबोर्डिंग तक।",
     href: "/services#automation",
   },
   {
     icon: Sparkles,
     title: "Website Development",
+    titleHi: "वेबसाइट डेवलपमेंट",
     description: "Craft exceptional digital experiences that captivate visitors and drive conversions. Enterprise-grade applications with modern frameworks.",
+    descriptionHi: "शानदार डिजिटल एक्सपीरियंस जो विज़िटर्स को मंत्रमुग्ध करते हैं और कन्वर्जन चलाते हैं।",
     href: "/services#web-development",
   },
   {
     icon: Globe,
     title: "Web & Mobile Apps",
+    titleHi: "वेब और मोबाइल ऐप्स",
     description: "Engineer fast, beautiful, and scalable applications. From MVPs to enterprise systems, we deliver software that users trust.",
+    descriptionHi: "फास्ट, सुंदर और स्केलेबल ऐप्स। MVP से लेकर एंटरप्राइज़ सिस्टम तक।",
     href: "/services#apps",
   },
   {
     icon: Cpu,
     title: "Custom AI Solutions",
+    titleHi: "कस्टम AI सॉल्यूशंस",
     description: "Sentiment analysis, document processing, predictive models, and specialized ML solutions tailored to your industry requirements.",
+    descriptionHi: "सेंटिमेंट एनालिसिस, डॉक्यूमेंट प्रोसेसिंग, प्रेडिक्टिव मॉडल, और आपकी इंडस्ट्री आवश्यकताओं के अनुसार तैयार ML सॉल्यूशंस।",
     href: "/services#custom-ai",
   },
 ];
 
 export default function ServicesPreview() {
   const [mounted, setMounted] = useState(false);
+  const { language } = useLanguage();
+  const isHindi = language === "hi";
 
   useEffect(() => {
     requestAnimationFrame(() => { setMounted(true); });
@@ -50,7 +63,7 @@ export default function ServicesPreview() {
       <div className="container mx-auto px-6">
         <div className={`text-center mb-16 ${mounted ? "animate-fade-in-up" : "opacity-0"}`}>
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-[var(--color-primary-subtle)] text-[var(--color-primary)] mb-4">
-            What We Build
+            {isHindi ? "हम क्या बनाते हैं" : "What We Build"}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-text)] mb-4 tracking-tight">
             Deep Tech, <span className="gradient-text">Real Results</span>
@@ -74,10 +87,10 @@ export default function ServicesPreview() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-[var(--color-text)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">
-                    {service.title}
+                    {isHindi ? service.titleHi : service.title}
                   </h3>
                   <p className="text-[var(--color-text-secondary)] leading-relaxed text-sm">
-                    {service.description}
+                    {isHindi ? service.descriptionHi : service.description}
                   </p>
                 </div>
               </div>

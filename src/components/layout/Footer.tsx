@@ -23,6 +23,7 @@ const InstagramIcon = () => (
 const footerLinks = [
   { href: "/", label: "Home" },
   { href: "/privacy-by-physics", label: "Privacy by Physics" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/services", label: "Services" },
   { href: "/products", label: "Products" },
   { href: "/about", label: "About" },
@@ -115,10 +116,10 @@ export default function Footer() {
               Ready to build something extraordinary? Let&apos;s talk.
             </p>
             <a
-              href="mailto:Kalingasovereignai@gmail.com"
+              href="mailto:contact@kalingasovereignai.com"
               className="text-[var(--color-primary)] hover:underline text-sm font-medium"
             >
-              Kalingasovereignai@gmail.com
+              contact@kalingasovereignai.com
             </a>
           </div>
         </div>

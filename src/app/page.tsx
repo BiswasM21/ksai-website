@@ -5,7 +5,7 @@ import CTABanner from "@/components/home/CTABanner";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kalinga Sovereign AI — Web Dev, App Dev & AI Automation Company",
+  title: "Kalinga Sovereign AI — Sovereign AI Infrastructure for the Global South",
   description: "Expert web development, mobile app development & AI automation for startups & SMEs. Custom solutions with React, Next.js, Flutter & cutting-edge AI. Based in Odisha, serving globally.",
   keywords: [
     "web development company",

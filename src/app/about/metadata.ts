@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Kalinga Sovereign AI — Our Story & Team",
+  title: "About Us — Our Mission, Vision & Team | Kalinga Sovereign AI",
   description: "Learn about Kalinga Sovereign AI, a deep tech startup building sovereign AI infrastructure for the Global South. Meet our team of experts in web development, app development, and AI automation.",
   keywords: [
     "about Kalinga Sovereign AI",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "founders India",
   ],
   openGraph: {
-    title: "About Kalinga Sovereign AI",
+    title: "About Us — Our Mission, Vision & Team | Kalinga Sovereign AI",
     description: "Deep tech startup building sovereign AI infrastructure for the Global South.",
     url: "https://kalingasovereignai.com/about",
   },

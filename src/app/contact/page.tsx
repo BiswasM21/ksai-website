@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
 import ContactForm from "@/components/ContactForm";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Us — Web Dev, App Dev & AI Automation",
+  title: "Contact Us | Kalinga Sovereign AI",
   description: "Contact Kalinga Sovereign AI for web development, mobile app development, and AI automation projects. Get a free 30-minute consultation. Based in Odisha, serving globally.",
   keywords: [
     "contact Kalinga Sovereign AI",
@@ -37,13 +37,19 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "Kalingasovereignai@gmail.com",
-    href: "mailto:Kalingasovereignai@gmail.com",
+    value: "contact@kalingasovereignai.com",
+    href: "mailto:contact@kalingasovereignai.com",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+91 9692000359",
+    href: "tel:+919692000359",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "Odisha, Odisha, India",
+    value: "Bhubaneswar, Odisha, India",
     href: null,
   },
 ];

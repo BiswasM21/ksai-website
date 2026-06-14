@@ -9,9 +9,9 @@ export default function SettingsPage() {
   const [settings, setSettings] = useState({
     siteName: "Kalinga Sovereign AI",
     tagline: "Web Dev, App Dev & AI Automation Company",
-    email: "Kalingasovereignai@gmail.com",
+    email: "contact@kalingasovereignai.com",
     whatsapp: "919692000359",
-    address: "Odisha, Odisha, India",
+    address: "Bhubaneswar, Odisha, India",
     linkedin: "https://linkedin.com/company/kalinga-sovereign-ai",
     twitter: "https://x.com/Kalinga_Sov_Ai",
     instagram: "https://www.instagram.com/kalingasovereignai/",

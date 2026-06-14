@@ -78,8 +78,8 @@ export default function AccessibilityPage() {
               <div className="bg-[var(--color-surface)] p-6 rounded-xl border border-[var(--color-border)]">
                 <p className="mb-0">
                   <strong className="text-[var(--color-text)]">Email:</strong>{" "}
-                  <a href="mailto:Kalingasovereignai@gmail.com" className="text-[var(--color-primary)] hover:underline">
-                    Kalingasovereignai@gmail.com
+                  <a href="mailto:contact@kalingasovereignai.com" className="text-[var(--color-primary)] hover:underline">
+                    contact@kalingasovereignai.com
                   </a>
                 </p>
               </div>

@@ -7,7 +7,7 @@ import { Target, Eye, Heart, Users, ArrowRight, Shield, Cpu } from "lucide-react
 
 const quickFacts = [
   { label: "Founded", value: "2026" },
-  { label: "Headquarters", value: "Odisha, Odisha" },
+  { label: "Headquarters", value: "Bhubaneswar, Odisha" },
   { label: "CIN", value: "U62013OD2026PTC052646" },
   { label: "Reach", value: "India + Global South" },
 ];
@@ -105,7 +105,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-text)] mb-4 tracking-tight">
-              What We Are Building
+              What We Build
             </h2>
           </div>
 
@@ -157,7 +157,7 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
               <Button className="text-base px-8 py-6">
-                Partner With Us
+                Partner with Us
               </Button>
             </Link>
             <Link href="/contact?type=careers">

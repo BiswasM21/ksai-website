@@ -26,7 +26,7 @@ export default function Logo({ size = 48, className = "", showText = true }: Log
         />
       </div>
       {showText && (
-        <span className="font-bold text-lg text-[var(--color-text)] tracking-tight group-hover:text-[var(--color-primary)] transition-colors hidden sm:block">
+        <span className="font-bold text-lg text-[var(--color-text)] tracking-tight group-hover:text-[var(--color-primary)] transition-colors hidden sm:block whitespace-nowrap">
           Kalinga Sovereign AI
         </span>
       )}

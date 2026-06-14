@@ -4,7 +4,7 @@ import { ArrowLeft, Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Products",
+  title: "Products — AI Tools & Resources | Kalinga Sovereign AI",
   description: "Premium AI tools and resources from Kalinga Sovereign AI - Claude Skills bundles, prompts, and more.",
   openGraph: {
     title: "Products | Kalinga Sovereign AI",
